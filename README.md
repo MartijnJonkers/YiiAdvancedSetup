@@ -4,18 +4,14 @@ YiiAdvancedSetup
 This is a standard Yii webapp there are only added some core features.
 
 Added modules:
-- Rights:
-  This extension utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control.
-- Translate
-  This extension collects all untranslated messages in the page and then you can add a button to translate, translate automatically using google translate, check for missing translations, edit translations and more.
+- Rights: This extension utilizes Yii's built-in Database Authorization Manager (CDbAuthManager) to provide a web interface for advanced access control.
+- Translate: This extension collects all untranslated messages in the page and then you can add a button to translate, translate automatically using google translate, check for missing translations, edit translations and more.
   
 Added extensions:
-- EMenu
-  This extension class extends CMenu
+- EMenu: This extension class extends CMenu
 
 The following modulesa re planned to be added:
-- Ei18n
-  Ei18n is a translation module to allow Yii'ers to easily manage missing translations on application pages. It is heavily inspired by yii.translate developed by Gustavo Salomé Silva gusnips.
+- Ei18n: Ei18n is a translation module to allow Yii'ers to easily manage missing translations on application pages. It is heavily inspired by yii.translate developed by Gustavo Salomé Silva gusnips.
   
 The following extensions are planned to add:
 - backjob
