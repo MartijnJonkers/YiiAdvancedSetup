@@ -16,6 +16,10 @@ return array(
         'efontawesome',
     ),
 
+    'aliases' => array(
+        'vendor' => dirname(__FILE__) . '/../../../vendor',
+    ),
+
     'import'=>array(
         'application.models.*',
         'application.models.forms.*',
@@ -148,6 +152,17 @@ return array(
 
         'efontawesome' => array(
             'class' => 'ext.EFontAwesome.components.EFontAwesome',
+        ),
+        'sass' => array(
+            'class' => 'ext.Sass.SassHandler',
+            'compilerPath' => dirname(__FILE__) . '/../vendor/scssphp/scss.inc.php',
+            // List of import paths.
+            // Can be strings or callable functions:
+            // function($searchPath) {return $targetPath;}
+            // Defaults to empty array
+            'importPaths' => array(
+                dirname(__FILE__).'/../css/',
+            ),
         ),
 	),
 

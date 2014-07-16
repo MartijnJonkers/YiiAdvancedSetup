@@ -15,6 +15,9 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
+
+    <?php Yii::app()->sass->register( Yii::app()->getBasePath().'/../css/main.scss' ); ?>
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
