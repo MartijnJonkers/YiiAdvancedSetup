@@ -12,6 +12,7 @@ return array(
 	'preload'=>array(
         'log',
         'translate',
+        'backjob',
     ),
 
     'import'=>array(
@@ -78,6 +79,15 @@ return array(
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
+
+        'backjob'=>array(
+            'class'=>'ext.Backjob.EBackJob',
+            'checkAndCreateTable'=>true,
+            'tableName'=>'Backjob',
+            'useDb'=>true,
+            'useCache'=>false,
+            'errorTimeout' => 60,
+        ),
 
         'cache'=> ('localhost'==$_SERVER['SERVER_NAME'] ? array(
             'class'=>'system.caching.CFileCache'
