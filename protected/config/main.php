@@ -13,6 +13,7 @@ return array(
         'log',
         'translate',
         'backjob',
+        'efontawesome',
     ),
 
     'import'=>array(
@@ -21,6 +22,7 @@ return array(
         'application.models.tables.*',
         'application.models.data.*',
         'application.components.*',
+        'application.components.core.*',
         'application.components.dataproviders.*',
         'application.modules.rights.*',
         'application.modules.rights.components.*',
@@ -142,6 +144,10 @@ return array(
                   'en'=>'English',
                   'fr'=>'Français',
             ),
+        ),
+
+        'efontawesome' => array(
+            'class' => 'ext.EFontAwesome.components.EFontAwesome',
         ),
 	),
 

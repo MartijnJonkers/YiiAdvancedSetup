@@ -10,4 +10,7 @@ else
     echo Yii::app()->user->getState('username')."<br>";
     echo Yii::app()->user->getState('email')."<br>";
 }
+
 ?>
+
+<i class="fa fa-camera-retro fa-2x"></i> fa-2x

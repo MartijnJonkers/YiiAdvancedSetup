@@ -16,33 +16,24 @@ class MainMenu extends EMenu
 
         $user = Yii::app()->user;
 
-        if($user->isSuperUser)
+        if ( Yii::app()->user->checkAccess('Site.index') )
+            $this->items = array_merge( $this->items, array( $this->menuSub( Yii::t(__class__, 'Home'), 'site' )));
 
-        /* open pages */
-        $this->items = array_merge( $this->items, array(
-            $this->menuSub( Yii::t(__class__, 'Home'), 'site' )
-        ));
-
-        /*  */
         $addSubs = array();
         if ( Yii::app()->user->checkAccess('User.index') )
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Gebruikers beheer'), 'user' );
         if ( Yii::app()->user->checkAccess('Translation.*') )
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Vertalingen'), 'translation' );
-        if (count($addSubs) > 0) {
-            $this->items = array_merge( $this->items, array(
-                $this->menuSub( Yii::t(__class__, 'Website beheer'), '', '', $addSubs),
-            ));
-        }
-
-        /* Superuser menus */
         if ( Yii::app()->user->getIsSuperuser() ) {
-            $addSubs = array();
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Rechten beheer'), 'rights/authItem/permissions', 'rights/*' );
             //$addSubs[] = $this->menuSub( Yii::t(__class__, 'Yii logging'), 'backendView/yiilog' );
+        }
+
+        if( count($addSubs) )
+        {
             $this->items = array_merge( $this->items, array(
-                $this->menuSub( Yii::t(__class__, 'Technisch beheer'), '', '', $addSubs),
-            ));
+                    $this->menuSub( Yii::t(__class__, 'Technisch beheer'), '', '', $addSubs),
+                ));
         }
 
         /* login */

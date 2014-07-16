@@ -1755,3 +1755,29 @@ Stack trace:
 REQUEST_URI=/jonkersAA/user/update/1
 HTTP_REFERER=http://localhost/jonkersAA/user
 ---
+2014/07/16 20:09:08 [error] [php] key_exists(): The first argument should be either a string or an integer (C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\MPTranslate.php:201)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(387): MPTranslate->init()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CWebApplication->getComponent()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CWebApplication->preloadComponents()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CWebApplication->__construct()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): createApplication()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): createWebApplication()
+REQUEST_URI=/YiiAdvancedSetup/site/test?_e_back_job_monitor_id=1
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\MPTranslate.php (201)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\MPTranslate.php (54)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/07/16 20:09:03 [error] [system.db.CDbCommand] CDbCommand::fetchAll() fout: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'jonkersaa.backjob' doesn't exist. Het uitgevoerde SQL statement was: SHOW FULL COLUMNS FROM `Backjob`.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\Backjob\EBackJob.php (116)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/07/16 20:27:12 [error] [php] include(Controller.php): failed to open stream: No such file or directory (C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php:427)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.php(4): spl_autoload_call()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(354): require()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiAdvancedSetup/site
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.php (4)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
