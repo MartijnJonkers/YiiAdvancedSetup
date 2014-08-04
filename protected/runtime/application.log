@@ -2405,3 +2405,19 @@ Stack trace:
 REQUEST_URI=/YiiAdvancedSetup/translation
 HTTP_REFERER=http://localhost/YiiAdvancedSetup/user
 ---
+2014/08/04 20:40:40 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "C:\xampp\htdocs\YiiAdvancedSetup\assets" is ongeldig. Dit moet een bestaande en door de web server beschrijfbare map zijn.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CAssetManager.php:138
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CAssetManager.php(123): CAssetManager->setBasePath('C:\xampp\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CAssetManager.php(217): CAssetManager->getBasePath()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\EFontAwesome\components\EFontAwesome.php(41): CAssetManager->publish('C:\xampp\htdocs...', false, -1, true)
+#3 C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\EFontAwesome\components\EFontAwesome.php(27): EFontAwesome->getAssetsUrl()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(387): EFontAwesome->init()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('efontawesome')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\xampp\htdocs...')
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\xampp\htdocs...')
+#9 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\xampp\htdocs...')
+#10 {main}
+REQUEST_URI=/YiiAdvancedSetup/user
+HTTP_REFERER=http://localhost/YiiAdvancedSetup/translation/index?lang=nl
+---
