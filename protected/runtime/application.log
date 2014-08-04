@@ -2244,3 +2244,88 @@ REQUEST_URI=/YiiAdvancedSetup/site
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\Sass\SassHandler.php (267)
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\Sass\SassHandler.php (242)
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\Sass\SassHandler.php (222)
+2014/07/16 21:41:09 [error] [exception.CException] exception 'CException' with message 'Unrecognized locale "--".' in C:\xampp\htdocs\YiiAdvancedSetup\framework\i18n\CLocale.php:105
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\i18n\CLocale.php(64): CLocale->__construct('--')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(402): CLocale::getInstance('--')
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php(111): CApplication->getLocale()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(105): CComponent->__get('locale')
+#4 C:\xampp\htdocs\YiiAdvancedSetup\protected\views\translation\index.php(7): CModule->__get('locale')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(869): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#9 C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\TranslationController.php(77): CController->render('index', Array)
+#10 [internal function]: TranslationController->actionIndex('en')
+#11 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(TranslationController), Array)
+#12 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(TranslationController), Object(ReflectionMethod), Array)
+#13 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#18 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): CController->run('index')
+#22 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('translation/ind...')
+#23 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/YiiAdvancedSetup/translation/index?lang=en
+HTTP_REFERER=http://localhost/YiiAdvancedSetup/translation/index?lang=en
+---
+2014/08/04 12:16:29 [error] [php] Undefined property: CWebApplication::$user (C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\WebUser.php:17)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(387): WebUser->init()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(103): CWebApplication->getComponent()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\Controller.php(32): CWebApplication->__get()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(359): SiteController->__construct()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(276): CWebApplication->createController()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiAdvancedSetup/
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\WebUser.php (17)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\Controller.php (32)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/04 16:11:16 [error] [exception.CException] exception 'CException' with message 'CFileCache en zijn behaviors hebben geen method of closure met naam "clear".' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\Controller.php(29): CComponent->__call('clear', Array)
+#1 C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\Controller.php(29): CFileCache->clear()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(359): Controller->__construct('site', NULL)
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(276): CWebApplication->createController('')
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/
+HTTP_REFERER=http://localhost/YiiAdvancedSetup/
+---
+2014/08/04 16:25:38 [error] [php] include(Chtml.php): failed to open stream: No such file or directory (C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php:427)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\protected\views\translation\index.php(14): spl_autoload_call()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CBaseController.php(126): require()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CBaseController.php(95): TranslationController->renderInternal()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(869): TranslationController->renderFile()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(782): TranslationController->renderPartial()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\TranslationController.php(89): TranslationController->render()
+#6 unknown(0): TranslationController->actionIndex()
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(133): TranslationController->runAction()
+#11 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php(36): RightsFilter->filter()
+#13 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CInlineFilter.php(58): TranslationController->filterRights()
+#14 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#15 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): TranslationController->runActionWithFilters()
+#17 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): TranslationController->run()
+#18 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiAdvancedSetup/translation
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\views\translation\index.php (14)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\TranslationController.php (89)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)

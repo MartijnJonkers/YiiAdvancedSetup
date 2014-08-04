@@ -27,6 +27,10 @@
 
 	<?php echo $content; ?>
 
+    <?php if ( Yii::app()->user->checkAccess('Translate.Translate.Create') ) {
+            Yii::app()->translate->renderMissingTranslationsEditor();
+        } ?>
+
 	<div class="clear"></div>
 
 	<div id="footer">

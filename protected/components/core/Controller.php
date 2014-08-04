@@ -20,4 +20,16 @@ class Controller extends RController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+    /**
+    * Base controler tries to do an educated guess into the language the user might want
+    */
+    public function __construct($id,$module=null)
+    {
+        // run parent init
+        parent::__construct($id, $module);
+
+        // laod the current language
+        //$this->forward('Language/Load',false);
+    }
 }

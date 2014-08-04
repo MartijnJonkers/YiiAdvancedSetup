@@ -8,10 +8,17 @@
 
 <p>
     <?php echo Yii::t($this->id, 'Kies een taal') ?>:
-    <a href="<?php echo $this->createUrl('translation/index', array('lang'=>'nl')); ?>"><?php echo Yii::app()->locale->getLanguage('nl') ?></a> |
-    <a href="<?php echo $this->createUrl('translation/index', array('lang'=>'en')); ?>"><?php echo Yii::app()->locale->getLanguage('en') ?></a> |
-    <a href="<?php echo $this->createUrl('translation/index', array('lang'=>'de')); ?>"><?php echo Yii::app()->locale->getLanguage('de') ?></a> |
-    <a href="<?php echo $this->createUrl('translation/index', array('lang'=>'fr')); ?>"><?php echo Yii::app()->locale->getLanguage('fr') ?></a>
+    <ul>
+    <?php
+        foreach( $this->languages as $key => $language ) {
+            echo '<li>'.CHtml::tag(
+                'a',
+                array( 'href'=>$this->createUrl('translation/index', array('lang'=>$key)) ),
+                Yii::app()->locale->getLanguage($key)
+            ).'</li>';
+        }
+    ?>
+    </ul>
 </p>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

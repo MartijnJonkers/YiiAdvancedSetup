@@ -9,6 +9,8 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
 
+    'sourceLanguage'=>'--',
+
 	'preload'=>array(
         'log',
         'translate',
@@ -95,14 +97,9 @@ return array(
             'errorTimeout' => 60,
         ),
 
-        'cache'=> ('localhost'==$_SERVER['SERVER_NAME'] ? array(
+        'cache'=> array(
             'class'=>'system.caching.CFileCache'
-        ) : array(
-            'class'=>'system.caching.CMemCache',
-            'servers'=>  array(
-                array('host'=>'10.0.0.2', 'port'=>11211, 'weight'=>10),
-            ),
-        )),
+        ),
 
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=jonkersaa',
@@ -135,18 +132,19 @@ return array(
             'sourceMessageTable' => 'text',
             'translatedMessageTable' => 'text_translation',
             'cachingDuration' => 0,//(YII_DEBUG ? 0 : 3600),
-            'onMissingTranslation' => array('TranslateModule', 'missingTranslation'),
+            'onMissingTranslation' => array('Ei18n', 'missingTranslation'),
         ),
 
         'translate'=>array(
-            'class'=>'translate.components.MPTranslate',
-            'defaultLanguage' => '--',
-            'acceptedLanguages' => array(
-                  '--'=>'Default',
+            'class'=>'translate.components.Ei18n',
+            'createTranslationTables' => true,
+            'connectionID' => 'db',
+            'defaultLanguage' => 'en',
+            'languages' => array(
                   'nl'=>'Nederlands',
-                  'de'=>'Deutsch',
                   'en'=>'English',
                   'fr'=>'Français',
+                  'de'=>'Deutsch',
             ),
         ),
 
@@ -156,10 +154,6 @@ return array(
         'sass' => array(
             'class' => 'ext.Sass.SassHandler',
             'compilerPath' => dirname(__FILE__) . '/../vendor/scssphp/scss.inc.php',
-            // List of import paths.
-            // Can be strings or callable functions:
-            // function($searchPath) {return $targetPath;}
-            // Defaults to empty array
             'importPaths' => array(
                 dirname(__FILE__).'/../css/',
             ),

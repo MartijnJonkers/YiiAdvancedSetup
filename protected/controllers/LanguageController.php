@@ -1,6 +1,6 @@
 <?php
 
-class TranslationController extends Controller
+class LanguageController extends Controller
 {
 	/**
 	 * @return array action filters
@@ -9,6 +9,51 @@ class TranslationController extends Controller
 	{
 		return [ 'rights' ];
 	}
+
+    public function getLanguages()
+    {
+        $languages = Yii::app()->translate->languages;
+
+        foreach( $languages as $key => $language )
+        {
+            $languages[$key] = Yii::app()->locale->getLanguage($key);
+        }
+
+        return $languages;
+    }
+
+    /**
+    * Load the current selected language
+    *
+    */
+    public function actionLoad()
+    {
+        // Get the users preffered language from the session
+        $lang = Yii::app()->user->getState('language', false);
+
+        // did we get a language?
+        if (false == $lang)
+        {
+            // language not set yet
+
+            // get the preferred language for user
+            $lang = substr(Yii::app()->request->preferredLanguage,0,2);
+
+            // do have that language?
+            if( !key_exists($lang, Yii::app()->translate->languages) )
+            {
+                // language not available
+
+                // get the default language
+                $lang = Yii::app()->translate->defaultLanguage;
+            }
+        }
+
+        /* Save language settings to sesion */
+        Yii::app()->translate->setLanguage($lang);
+        Yii::app()->user->setState('language', $lang );
+        Yii::app()->setLanguage($lang);
+    }
 
 	/**
 	 * Updates a particular model.
