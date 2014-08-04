@@ -80,7 +80,7 @@ class Text extends CActiveRecord
         $criteria->together = true;
 
         /* exclude some categories... */
-        //$criteria->compare('m.category','<>RightsModule',true);
+        $criteria->compare('m.category','<>RightsModule',true);
         $criteria->compare('m.category','<>LogAnalyzer',true);
 
 		return new CActiveDataProvider($this, array(
