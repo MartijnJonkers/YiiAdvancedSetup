@@ -17,7 +17,7 @@ The following modulesa re planned to be added:
 - Ei18n: Ei18n is a translation module to allow Yii'ers to easily manage missing translations on application pages. It is heavily inspired by yii.translate developed by Gustavo Salomé Silva gusnips.
 
 The following extensions are planned to add:
-- phpmailer
+- yiimailer
 - Highcharts
 - groupgridview
 - gridviewplus
