@@ -29,7 +29,7 @@ class Controller extends RController
         // run parent init
         parent::__construct($id, $module);
 
-        // laod the current language
-        //$this->forward('Language/Load',false);
+        // load the current language
+        Language::load();
     }
 }

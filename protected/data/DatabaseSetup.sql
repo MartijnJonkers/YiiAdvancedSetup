@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `text_translation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Beperkingen voor geëxporteerde tabellen
+-- Beperkingen voor ge?xporteerde tabellen
 --
 
 --

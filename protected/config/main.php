@@ -102,7 +102,7 @@ return array(
         ),
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=jonkersaa',
+			'connectionString' => 'mysql:host=localhost;dbname=yiiadvanced',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
@@ -120,10 +120,6 @@ return array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-				// uncomment the following to show log messages on web pages
-				//array(
-				//	'class'=>'CWebLogRoute',
-				//),
 			),
 		),
 
@@ -131,7 +127,7 @@ return array(
             'class'=>'CDbMessageSource',
             'sourceMessageTable' => 'text',
             'translatedMessageTable' => 'text_translation',
-            'cachingDuration' => 0,//(YII_DEBUG ? 0 : 3600),
+            'cachingDuration' => 0,
             'onMissingTranslation' => array('Ei18n', 'missingTranslation'),
         ),
 
@@ -162,6 +158,6 @@ return array(
 
 	// application-level parameters that can be accessed
 	'params'=>array(
-		'adminEmail'=>'martijn_jonkers@hotmail.com',
+
 	),
 );
