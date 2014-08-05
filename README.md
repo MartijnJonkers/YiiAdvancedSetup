@@ -14,9 +14,9 @@ Added extensions:
 - sass (scssphp)
 - backjob
 - yiimailer
+- Highcharts (v4.0.1)
 
 The following extensions are planned to add:
-- Highcharts
 - groupgridview
 - gridviewplus
 
