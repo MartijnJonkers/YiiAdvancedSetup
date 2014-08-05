@@ -35,6 +35,7 @@ return array(
         'application.modules.rights.components.*',
         'application.modules.rights.components.dataproviders.*',
         'application.modules.translate.TranslateModule',
+        'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
     ),
 
