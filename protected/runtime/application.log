@@ -2421,3 +2421,20 @@ Stack trace:
 REQUEST_URI=/YiiAdvancedSetup/user
 HTTP_REFERER=http://localhost/YiiAdvancedSetup/translation/index?lang=nl
 ---
+2014/08/05 09:32:16 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1049] Unknown database 'yiiadvanced'' in C:\xampp\htdocs\YiiAdvancedSetup\framework\db\CDbConnection.php:382
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(387): CDbConnection->init()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\Ei18n.php(414): CModule->getComponent('db')
+#4 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\Ei18n.php(356): Ei18n->getDbConnection()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\translate\components\Ei18n.php(115): Ei18n->createSourceMessageTable()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(387): Ei18n->init()
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('translate')
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#9 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#10 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#12 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?DBGSESSID=418563972564600001;d=1,p=0,c=1
+---

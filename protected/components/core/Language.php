@@ -3,6 +3,21 @@
 class Language extends CComponent
 {
     /**
+    * Load the current selected language
+    *
+    */
+    public function init()
+    {
+        // get the language
+        $lang = self::getLanguage();
+
+        // Save language settings to sesion
+        Yii::app()->translate->setLanguage( $lang );
+        Yii::app()->user->setState('language', $lang );
+        Yii::app()->setLanguage( $lang );
+    }
+
+    /**
     * get all the available languages
     *
     */
@@ -55,21 +70,6 @@ class Language extends CComponent
 
         // return
         return $lang;
-    }
-
-    /**
-    * Load the current selected language
-    *
-    */
-    public static function load()
-    {
-        // get the language
-        $lang = self::getLanguage();
-
-        // Save language settings to sesion
-        Yii::app()->translate->setLanguage( $lang );
-        Yii::app()->user->setState('language', $lang );
-        Yii::app()->setLanguage( $lang );
     }
 }
 ?>

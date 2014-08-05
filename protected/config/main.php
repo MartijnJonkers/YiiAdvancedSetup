@@ -16,6 +16,7 @@ return array(
         'translate',
         'backjob',
         'efontawesome',
+        'language'
     ),
 
     'aliases' => array(
@@ -34,6 +35,7 @@ return array(
         'application.modules.rights.components.*',
         'application.modules.rights.components.dataproviders.*',
         'application.modules.translate.TranslateModule',
+        'ext.YiiMailer.YiiMailer',
     ),
 
 	'modules'=>array(
@@ -102,7 +104,7 @@ return array(
         ),
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=yiiadvanced',
+			'connectionString' => 'mysql:host=localhost;dbname=jonkersaa',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
