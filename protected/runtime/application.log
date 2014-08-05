@@ -2562,3 +2562,137 @@ REQUEST_URI=/YiiAdvancedSetup/
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\components\core\WebUser.php (17)
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\components\MainMenu.php (17)
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\views\layouts\column2.php (8)
+2014/08/05 20:32:44 [error] [exception.CException] exception 'CException' with message 'L'alias « ext.YiiPHPExcel.YiiPHPExcel.php » est invalide. Vérifiez qu'il pointe vers un fichier PHP existant.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php:322
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(196): YiiBase::import('ext.YiiPHPExcel...', true)
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/
+HTTP_REFERER=http://localhost/YiiAdvancedSetup/
+---
+2014/08/05 20:33:08 [error] [exception.CException] exception 'CException' with message 'L'alias « ext.YiiPHPExcel.YiiPHPExcel.php » est invalide. Vérifiez qu'il pointe vers un fichier PHP existant.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php:322
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(196): YiiBase::import('ext.YiiPHPExcel...', true)
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:33:36 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:40 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:41 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:41 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:42 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:42 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:34:42 [error] [exception.CException] exception 'CException' with message 'La propriété « YiiPHPExcel.PHPExcelPath » est indéfinie.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(220): CComponent->__set('PHPExcelPath', 'C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(386): YiiBase::createComponent(Array)
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CModule.php(523): CModule->getComponent('excel')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(163): CModule->preloadComponents()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(125): CApplication->__construct('C:\\xampp\\htdocs...')
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\YiiBase.php(98): YiiBase::createApplication('CWebApplication', 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): YiiBase::createWebApplication('C:\\xampp\\htdocs...')
+#7 {main}
+REQUEST_URI=/YiiAdvancedSetup/site/index?lang=nl
+---
+2014/08/05 20:41:58 [error] [php] unlink(C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.xlsx): Permission denied (C:\xampp\htdocs\YiiAdvancedSetup\protected\vendor\PHPExcel-1.8.0\Classes\PHPExcel\Writer\Excel2007.php:236)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\actions\CInlineAction.php(49): SiteController->actionExcel()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(286): SiteController->runAction()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): SiteController->run()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiAdvancedSetup/site/excel
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\vendor\PHPExcel-1.8.0\Classes\PHPExcel\Writer\Excel2007.php (236)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.php (84)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/05 20:42:58 [error] [php] Undefined property: PHPExcel::$properties (C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.php:62)
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(286): SiteController->runAction()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): SiteController->run()
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#5 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CWebApplication->run()
+REQUEST_URI=/YiiAdvancedSetup/site/excel
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\controllers\SiteController.php (62)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)

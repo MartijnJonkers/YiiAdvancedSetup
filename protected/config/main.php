@@ -16,7 +16,8 @@ return array(
         'translate',
         'backjob',
         'efontawesome',
-        'language'
+        'language',
+        //'excel'
     ),
 
     'aliases' => array(
@@ -37,6 +38,7 @@ return array(
         'application.modules.translate.TranslateModule',
         'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
+        //'ext.YiiPHPExcel.YiiPHPExcel',
     ),
 
 	'modules'=>array(
@@ -157,6 +159,10 @@ return array(
                 dirname(__FILE__).'/../css/',
             ),
         ),
+//        'excel' => array(
+//            'class' => 'ext.YiiPHPExcel.YiiPHPExcel',
+//            'PHPExcelPath' => dirname(__FILE__) . '/../vendor/PHPExcel-1.8.0/Classes/PHPExcel.php',
+//        )
 	),
 
 	// application-level parameters that can be accessed

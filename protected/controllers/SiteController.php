@@ -52,6 +52,44 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+    /**
+    * excel example action
+    *
+    * to enable excel, uncomment the phpexcel options in main.php config
+    */
+    public function actionExcel()
+    {
+        // get a filename
+        $filename = str_replace('.php', '.xlsx', __FILE__);
+
+        // create excel object
+        $objPHPExcel = Yii::app()->excel->create();
+
+        // Set properties
+        $objPHPExcel->getProperties()->setCreator("Maarten Balliauw");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Maarten Balliauw");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+
+        // Add some data
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Hello');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B2', 'world!');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Hello');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D2', 'world!');
+
+        // Rename sheet
+        $objPHPExcel->getActiveSheet()->setTitle('Simple');
+
+        // Save Excel 2007 file
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        $objWriter->save($filename);
+
+        // send to user
+        Yii::app()->getRequest()->sendFile('example.xlsx', @file_get_contents($filename));
+    }
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */
