@@ -21,4 +21,10 @@ Added extensions:
 - extended gridviews
 - YiiPHPExcel (v1.8.0)
 
+Planned to add
+- infiniteScroll
+- google analytics
+- a pdf creator (whatever works best)
+- yii-user
+
 All these extension and modules are already configured and a database setup is added. This way an advanced website can be created without a lot of configuration.
