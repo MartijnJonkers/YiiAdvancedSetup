@@ -28,5 +28,6 @@ Planned to add
 - infiniteScroll
 - google analytics
 - a pdf creator (whatever works best)
+- X-editable
 
 All these extension and modules are already configured and a database setup is added. This way an advanced website can be created without a lot of configuration.
