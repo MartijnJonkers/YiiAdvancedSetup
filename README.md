@@ -10,6 +10,8 @@ Added modules:
         This extension collects all untranslated messages in the page and then you can add a button to translate, translate automatically using google translate, check for missing translations, edit translations and more.
 - Ei18n:
         Ei18n is a translation module to allow Yii'ers to easily manage missing translations on application pages. It is heavily inspired by yii.translate developed by Gustavo Salomé Silva gusnips.(replaces translate module)
+- yii-user (with web-user-behaviour):
+    Yii PHP Framework extension for registration and management users accounts.
 
 Added extensions:
 - EMenu: This extension class extends CMenu
@@ -20,7 +22,7 @@ Added extensions:
 - Highcharts (v4.0.1)
 - extended gridviews
 - YiiPHPExcel (v1.8.0)
-- yii-user (with web-user-behaviour)
+- mbmenu
 
 Planned to add
 - infiniteScroll
