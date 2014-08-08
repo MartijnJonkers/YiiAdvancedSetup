@@ -1,15 +1,15 @@
 <?php
 /**
  * form View file
- * 
+ *
  * Renders the form to edit messages
- * 
+ *
  * note: No validation occurs on client
- * 
- * @author Antonio Ramirez 
- * @link http://www.ramirezcobos.com 
- * 
- * 
+ *
+ * @author Antonio Ramirez
+ * @link http://www.ramirezcobos.com
+ *
+ *
  * THIS SOFTWARE IS PROVIDED BY THE CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -49,7 +49,8 @@
 	<div class="translate-row">
 		<div class="translate-category"><?php echo $model->getAttributeLabel('translation'); ?></div>
 		<?php echo $form->textArea($model, 'translation', array('rows' => 2, 'cols' => 80, 'class' => 'wtranslate-wysiwyg', 'style' => 'width:750px;')); ?>
-		<?php echo $form->error($model, 'translation'); ?>
+        <?php //echo $form->textArea($model, 'translation', array('rows' => 13, 'cols' => 80, 'style' => 'width:760px;')); ?>
+        <?php echo $form->error($model, 'translation'); ?>
 	</div>
 
 	<div class="translate-buttons">

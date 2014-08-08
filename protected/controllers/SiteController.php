@@ -2,6 +2,11 @@
 
 class SiteController extends Controller
 {
+    public function filters()
+    {
+        return [ "rights" ];
+    }
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -27,14 +32,6 @@ class SiteController extends Controller
 	 */
 	public function actionIndex($lang = '')
 	{
-//        $mail = new YiiMailer();
-//        //$mail->clearLayout();//if layout is already set in config
-//        $mail->setFrom('from@example.com', 'John Doe');
-//        $mail->setTo('example@example.com');
-//        $mail->setSubject('Mail subject');
-//        $mail->setBody('Simple message');
-//        $mail->send();
-
         /* Handle language changes */
         if ('' != $lang)
         {

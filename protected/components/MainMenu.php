@@ -24,7 +24,7 @@ class MainMenu extends EMenu
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Gebruikers beheer'), 'user' );
         if ( Yii::app()->user->checkAccess('Translation.*') )
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Vertalingen'), 'translation' );
-        if ( Yii::app()->user->getIsSuperuser() ) {
+        if ( Yii::app()->user->isAdmin() ) {
             $addSubs[] = $this->menuSub( Yii::t(__class__, 'Rechten beheer'), 'rights/authItem/permissions', 'rights/*' );
             //$addSubs[] = $this->menuSub( Yii::t(__class__, 'Yii logging'), 'backendView/yiilog' );
         }
@@ -40,13 +40,13 @@ class MainMenu extends EMenu
         if( !$user->isGuest )
         {
             $this->items = array_merge( $this->items, array(
-                $this->menuSub( Yii::t(__class__, 'logout'), 'site/logout' )
+                $this->menuSub( Yii::t(__class__, 'logout'), 'user/logout' )
             ));
         }
         else
         {
             $this->items = array_merge( $this->items, array(
-                $this->menuSub( Yii::t(__class__, 'login'), 'site/login' )
+                $this->menuSub( Yii::t(__class__, 'login'), 'user/login' )
             ));
         }
     }

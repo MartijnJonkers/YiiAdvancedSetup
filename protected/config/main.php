@@ -17,7 +17,7 @@ return array(
         'backjob',
         'efontawesome',
         'language',
-        //'excel'
+        'excel'
     ),
 
     'aliases' => array(
@@ -32,13 +32,15 @@ return array(
         'application.components.*',
         'application.components.core.*',
         'application.components.dataproviders.*',
+        'application.modules.user.models.*',
+        'application.modules.user.components.*',
         'application.modules.rights.*',
         'application.modules.rights.components.*',
         'application.modules.rights.components.dataproviders.*',
         'application.modules.translate.TranslateModule',
         'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
-        //'ext.YiiPHPExcel.YiiPHPExcel',
+        'ext.YiiPHPExcel.YiiPHPExcel',
     ),
 
 	'modules'=>array(
@@ -48,30 +50,47 @@ return array(
 			'password'=>'gii',
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
+        'user'=>array(
+            'tableUsers'=>'users',
+            'tableProfiles'=>'users_profiles',
+            'tableProfileFields'=>'users_profilefields',
+            'hash' => 'md5',# encrypting method (php hash function)
+            'sendActivationMail' => true,# send activation email
+            'loginNotActiv' => false,# allow access for non-activated users
+            'activeAfterRegister' => false,# activate user on registration (only sendActivationMail = false)
+            'autoLogin' => true,# automatically login from registration
+            'registrationUrl' => array('/user/registration'),# registration path
+            'recoveryUrl' => array('/user/recovery'),# recovery password path
+            'loginUrl' => array('/user/login'),# login form path
+            'returnUrl' => array('/user/profile'),# page after login
+            'returnLogoutUrl' => array('/site/index'),# page after logout
+        ),
         'rights' => array(
-            'superuserName'=>'Admin',
-            'enableBizRule'=>true,
-            'userIdColumn'=>'ID',
-            'userNameColumn'=>'Email',
-            'flashSuccessKey'=>'succes',
-            'flashErrorKey'=>'error',
-            'appLayout'=>'application.views.layouts.column2',
+            'superuserName'=>'Admin', // Name of the role with super user privileges.
+            'authenticatedName'=>'Authenticated',  // Name of the authenticated user role.
+            'userIdColumn'=>'id', // Name of the user id column in the database.
+            'userNameColumn'=>'username',  // Name of the user name column in the database.
+            'enableBizRule'=>true,  // Whether to enable authorization item business rules.
+            'enableBizRuleData'=>true,   // Whether to enable data for business rules.
+            'displayDescription'=>true,  // Whether to use item description instead of name.
+            'flashSuccessKey'=>'RightsSuccess', // Key to use for setting success flash messages.
+            'flashErrorKey'=>'RightsError', // Key to use for setting error flash messages.
+            'baseUrl'=>'/rights', // Base URL for Rights. Change if module is nested.
+            'layout'=>'rights.views.layouts.main',  // Layout to use for displaying Rights.
+            'appLayout'=>'application.views.layouts.column2', // Application layout.
+            //'cssFile'=>'rights.css', // Style sheet file to use for Rights.
+            'install'=>false,  // Whether to enable installer.
+            'debug'=>false,
         ),
 	),
 
 	// application components
 	'components'=>array(
 		'user'=>array(
-            'class'=>'WebUser',
+            'class'=>'AppUser',
             'allowAutoLogin'=>true,
-            'autoUpdateFlash'=>false,
+            'loginUrl'=>array('/user/login'),
 		),
-
-        'session' => array (
-            'autoStart' => true,
-            'cookieMode' => 'only',
-            'timeout' => 30
-        ),
 
         'authManager'=>array(
             'class'=>'RDbAuthManager',
@@ -81,6 +100,12 @@ return array(
             'assignmentTable'=>'rights_authassignment',
             'rightsTable'=>'rights',
             'defaultRoles'=>array('Guest'),
+        ),
+
+        'session' => array (
+            'autoStart' => true,
+            'cookieMode' => 'only',
+            'timeout' => 30
         ),
 
 		'urlManager'=>array(
@@ -112,6 +137,7 @@ return array(
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
+            //'schemaCachingDuration' => 0,
 		),
 
 		'errorHandler'=>array(
@@ -144,8 +170,8 @@ return array(
             'languages' => array(
                   'nl'=>'Nederlands',
                   'en'=>'English',
-                  'fr'=>'Français',
-                  'de'=>'Deutsch',
+                  //'fr'=>'Français',
+                  //'de'=>'Deutsch',
             ),
         ),
 
@@ -159,10 +185,10 @@ return array(
                 dirname(__FILE__).'/../css/',
             ),
         ),
-//        'excel' => array(
-//            'class' => 'ext.YiiPHPExcel.YiiPHPExcel',
-//            'PHPExcelPath' => dirname(__FILE__) . '/../vendor/PHPExcel-1.8.0/Classes/PHPExcel.php',
-//        )
+        'excel' => array(
+            'class' => 'ext.YiiPHPExcel.YiiPHPExcel',
+            'PHPExcelPath' => dirname(__FILE__) . '/../vendor/PHPExcel-1.8.0/Classes/PHPExcel.php',
+        )
 	),
 
 	// application-level parameters that can be accessed

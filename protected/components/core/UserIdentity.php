@@ -81,22 +81,25 @@ class UserIdentity extends CUserIdentity
     /**
     * Restore all the data needed for the users SESSION
     */
-    public static function restoreUserSession()
+    public static function restoreUserSession($webuser = null)
     {
+        if($webuser == null)
+            $webuser = Yii::app()->user;
+
         /* Determine the user role(s) */
-        $roles = Yii::app()->authManager->getRoles(Yii::app()->user->id);
+        $roles = Yii::app()->authManager->getRoles($webuser->id);
         if ( in_array( User::ROLE_ADMIN, array_keys($roles) ) )
         {
             /* Admin */
-            Yii::app()->user->setState('siteAdmin', true);
+            $webuser->setState('siteAdmin', true);
         }
 
         /* Get the user */
-        $user = User::model()->findByPk( Yii::app()->user->id );
-        Yii::app()->user->setState('email',     $user->Email);
-        Yii::app()->user->setState('name',      $user->Name.' '.$user->LastName);
-        Yii::app()->user->setState('firstname', $user->Name);
-        Yii::app()->user->setState('lastname',  $user->LastName);
-        Yii::app()->user->setState('username',  $user->UserName);
+        $user = User::model()->findByPk( $webuser->id );
+        $webuser->setState('email',     $user->Email);
+        $webuser->setState('name',      $user->Name.' '.$user->LastName);
+        $webuser->setState('firstname', $user->Name);
+        $webuser->setState('lastname',  $user->LastName);
+        $webuser->setState('username',  $user->UserName);
     }
 }
