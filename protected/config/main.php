@@ -1,5 +1,6 @@
 <?php
 
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -8,6 +9,8 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+
+    'theme'=>'jonkersaa',
 
     'sourceLanguage'=>'--',
 
@@ -77,7 +80,7 @@ return array(
             'flashErrorKey'=>'RightsError', // Key to use for setting error flash messages.
             'baseUrl'=>'/rights', // Base URL for Rights. Change if module is nested.
             'layout'=>'rights.views.layouts.main',  // Layout to use for displaying Rights.
-            'appLayout'=>'application.views.layouts.column2', // Application layout.
+            'appLayout'=>'application.views.layouts.column1', // Application layout.
             //'cssFile'=>'rights.css', // Style sheet file to use for Rights.
             'install'=>false,  // Whether to enable installer.
             'debug'=>false,
@@ -188,7 +191,7 @@ return array(
         'excel' => array(
             'class' => 'ext.YiiPHPExcel.YiiPHPExcel',
             'PHPExcelPath' => dirname(__FILE__) . '/../vendor/PHPExcel-1.8.0/Classes/PHPExcel.php',
-        )
+        ),
 	),
 
 	// application-level parameters that can be accessed

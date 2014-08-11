@@ -1,1 +1,85 @@
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(http://fonts.gstatic.com/s/droidsans/v5/s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff) format('woff'); }
 
+* {
+  margin: 0px;
+  padding: 0px; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Droid Sans'; }
+
+#page {
+  width: 1000px;
+  margin: 0 auto;
+  /*min-height: 100%;*/
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.6); }
+  #page #header {
+    width: 100%;
+    min-height: 150px;
+    background-color: red; }
+  #page #content {
+    width: 100%;
+    background-color: blue; }
+  #page #footer {
+    background-color: yellow;
+    width: 100%;
+    text-align: center; }
+
+.accordion-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .accordion-menu li {
+    display: block;
+    float: left;
+    width: 200px;
+    background: rgba(1, 1, 1, 0.2);
+    text-align: center;
+    text-shadow: 1px 0 0 rgba(255, 255, 255, 0.1); }
+    .accordion-menu li a {
+      min-width: 100%;
+      min-height: 100%;
+      padding: 5px 0px 5px 0px;
+      text-decoration: none;
+      color: black;
+      display: block; }
+    .accordion-menu li .toggler {
+      content: 'test'; }
+    .accordion-menu li .current .toggler {
+      background: #e50e00;
+      background: -o-linear-gradient(top, #f02e00 0%, #e50e00 100%);
+      background: -webkit-linear-gradient(top, #f02e00 0%, #e50e00 100%);
+      background: -moz-linear-gradient(top, #f02e00 0%, #e50e00 100%);
+      background: linear-gradient(to bottom, #f02e00 0%, #e50e00 100%);
+      color: white; }
+    .accordion-menu li .arrow {
+      clear: right;
+      float: right;
+      width: 200px;
+      height: 20px;
+      background-repeat: no-repeat;
+      background-position: -8px -66px;
+      cursor: pointer; }
+    .accordion-menu li .level2 {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      .accordion-menu li .level2 li {
+        line-height: 24px; }
+        .accordion-menu li .level2 li .active a {
+          color: #fe2000;
+          font-weight: bold;
+          text-shadow: none; }
+  .accordion-menu li:hover {
+    background: #a09e9e;
+    background: -o-linear-gradient(top, #b0aeae 10%, #a09e9e 100%);
+    background: -webkit-linear-gradient(top, #b0aeae 10%, #a09e9e 100%);
+    background: -moz-linear-gradient(top, #b0aeae 10%, #a09e9e 100%);
+    background: linear-gradient(to bottom, #b0aeae 10%, #a09e9e 100%); }
+    .accordion-menu li:hover a {
+      color: white; }

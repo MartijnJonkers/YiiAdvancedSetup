@@ -49,6 +49,9 @@ class SiteController extends Controller
 		$this->render('index');
 	}
 
+    public function actionUpdateUser()
+    {
+    }
     /**
     * excel example action
     *

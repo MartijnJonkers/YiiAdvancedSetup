@@ -9,6 +9,7 @@ class EMenu extends CWidget
     public $id = "";
     public $items = array();
     private $_route = array();
+    public $css = false;
 
     public function init()
     {
@@ -23,7 +24,8 @@ class EMenu extends CWidget
         $css = $assetUrl . '/assets/css/accordionmenu.css';
         $js = $assetUrl . '/assets/js/accordionmenu.min.js';
 
-        Yii::app()->clientScript->registerCSSFile( $css );
+        if($this->css)
+            Yii::app()->clientScript->registerCSSFile( $css );
         Yii::app()->clientScript->registerScriptFile( $js );
 
         $content = '';
@@ -33,7 +35,7 @@ class EMenu extends CWidget
 
         if ('legacy' == Yii::app()->controller->id)
         {
-            $this->_route[$i++] = substr($_SERVER['REQUEST_URI'],1); 
+            $this->_route[$i++] = substr($_SERVER['REQUEST_URI'],1);
         }
         else
         {
@@ -53,7 +55,7 @@ class EMenu extends CWidget
         echo CHtml::tag($this->tag, $htmlOptions, $content);
         Yii::app()->clientScript->registerScript(
             'accordionMenu',
-            "$('.".$menuClass."').accordionMenu();", 
+            "$('.".$menuClass."').accordionMenu();",
             CClientScript::POS_READY
         );
     }
@@ -67,7 +69,7 @@ class EMenu extends CWidget
 
         if( isset($item['sub']) && is_array($item['sub']) )
         {
-            foreach ($item['sub'] as $sub) 
+            foreach ($item['sub'] as $sub)
             {
                 $submenu .= $this->renderTag($sub, $nextlevel);
             }
@@ -79,7 +81,7 @@ class EMenu extends CWidget
         $toggleclass = array('toggler');
         if ( !empty($item['active']) )
         {
-            $active = explode('/', $item['active']);            
+            $active = explode('/', $item['active']);
             if (0 == strncmp($this->_route[0],$active[0],strlen($active[0])))
             {
                 if ( (isset($active[1]) && ($this->_route[1] == $active[1])) ||
@@ -107,9 +109,9 @@ class EMenu extends CWidget
                 $subclass[] = 'current';
                 $toggleclass[] = 'active';
             }
-            $submenu = CHtml::tag($this->tag, $htmlOptions, $submenu);    
+            $submenu = CHtml::tag($this->tag, $htmlOptions, $submenu);
         }
-        
+
         if( $level == 1 ){
             $icon_class = isset($item['icon']) ? $item['icon'] : 'none';
             $icon_class = 'menu_icon ' . 'icon-' . $icon_class;
@@ -119,9 +121,9 @@ class EMenu extends CWidget
             );
             $toggleContent = $icon . $toggle . $content;
             $content  = CHtml::tag('div', $toggleOptions, $toggleContent);
-        }        
+        }
         $content .= $submenu;
-        $menu .= CHtml::tag($this->subtag, array('class'=> implode(' ', $subclass)), $content);        
+        $menu .= CHtml::tag($this->subtag, array('class'=> implode(' ', $subclass)), $content);
         return $menu;
     }
 }
