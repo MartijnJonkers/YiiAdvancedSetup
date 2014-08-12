@@ -28,11 +28,11 @@ class Controller extends RController
     */
     public function beforeAction($action)
     {
-        /* connect a scss file automaticly */
-        if(isset( Yii::app()->theme )){
-
+        /* connect css file for controller action, if any */
+        if( isset( Yii::app()->theme ) )
+        {
             /* get the path of the scss file */
-            $path = Yii::app()->theme->basePath.'/scss/'.$this->id.'/'.$action->id.'.scss';
+            $path = Yii::app()->theme->basePath.'/scss/'.Yii::app()->controller->id.'/'.Yii::app()->controller->action->id.'.scss';
 
             /* does the file exist? */
             if(file_exists($path)){
@@ -41,6 +41,7 @@ class Controller extends RController
                 Yii::app()->sass->register( $path );
             }
         }
+
 
         /* continue */
         return parent::beforeAction($action);

@@ -3,43 +3,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
-
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
-
-    <?php Yii::app()->sass->register( Yii::app()->getBasePath().'/../css/main.scss' ); ?>
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+	<meta name="language" content="<?php echo Yii::app()->translate->language; ?>" />
+    <?php Yii::app()->sass->register( Yii::app()->theme->basePath.'/scss/main.scss' ,'','theme.resources','css_compiled'); ?>
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
+    <div class="container" id="page">
 
-<div class="container" id="page">
+        <div id="header">
+            <?php
+                $u = Yii::app()->user;
+                $this->widget('application.extensions.mbmenu.MbMenu',array(
+                    'items'=>array(
+                        array(
+                            'label'=>Yii::t('mainmenu','Home'),
+                            'url'=>array('/site/index'),
+                            'visible'=>$u->checkAccess('Site.index')
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','Administrator'),
+                            'url'=>array('#'),
+                            'visible'=>!$u->isGuest,
+                            'items'=>array(
+                                array(
+                                    'label'=>Yii::t('mainmenu','Users'),
+                                    'url'=>array('/user'),
+                                    'visible'=>$u->checkAccess('User.index')
+                                ),
+                                array(
+                                    'label'=>Yii::t('mainmenu','Translations'),
+                                    'url'=>array('/translate/translation'),
+                                    'visible'=>$u->checkAccess('Translation.index')
+                                ),
+                                array(
+                                    'label'=>Yii::t('mainmenu','Rights'),
+                                    'url'=>array('/rights/authItem/permissions'),
+                                    'visible'=>$u->isAdmin()
+                                ),
+                            )
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','Logout').' ('.$u->name.')',
+                            'url'=>array('/user/logout'),
+                            'visible'=>!$u->isGuest
+                        ),
+                    ),
+                ));
+            ?>
+        </div>
 
-	<?php echo $content; ?>
+	    <?php
+            /* page content */
+            echo $content;
+        ?>
 
-    <?php if ( Yii::app()->user->checkAccess('Translate.Translate.Create') ) {
-            Yii::app()->translate->renderMissingTranslationsEditor();
-        } ?>
+        <?php
+            /* missing translations */
+            if ( Yii::app()->user->checkAccess('Translate.Translate.Create') ) {
+                Yii::app()->translate->renderMissingTranslationsEditor();
+            }
+        ?>
 
-	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+        <div id="pagefooter">
 
-</div><!-- page -->
+        </div>
 
+    </div><!-- page -->
+
+    <div id="footer">
+        Copyright &copy; <?php echo date('Y'); ?> by Jonkers AA |  All Rights Reserved. | <?php echo Yii::powered(); ?>
+    </div><!-- footer -->
 </body>
 </html>

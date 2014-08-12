@@ -1,3 +1,6 @@
+$pageWidth: 1150px;
+$headerHeight: $pageWidth/6;
+
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
@@ -16,28 +19,64 @@ html, body{
     width: 100%;
     height: 100%;
     font-family: 'Droid Sans';
+    //background: url('../img/background.jpg');
+    background-color: #F8F8F8;
 }
 
 #page{
-    width:1000px;
+    width:$pageWidth;
     margin:0 auto;
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.6);
-    /*min-height: 100%;*/
+    //box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.6);
+    //background-color: rgba(255,255,255,0.7);
 
     #header{
+        position: relative;
         width:100%;
-        min-height:100px;
+        min-height:$headerHeight;
+        background-size: $pageWidth ($pageWidth/4);
+        background-repeat: no-repeat;
+        background-position: center;
+        .left{
+            width:50%;
+            float:left;
+            max-height: $headerHeight - 29;
+            .content{
+                max-width:100%;
+                max-height:100%;
+                width:100%;
+                padding:20px;
+                .logo{
+                    display:block;
+                    margin:0 auto;
+                }
+            }
+        }
+        .right{
+            width:50%;
+            float:right;
+            max-height: $headerHeight - 29;
+            .content{
+                max-width:100%;
+                max-height:100%;
+                padding:20px;
+            }
+        }
+        /* menu bar */
+        #nav-container{
+            position: absolute;
+            width:100%;
+            margin-top:$headerHeight - 29;
+        }
     }
 
     #content{
         max-width:100%;
         padding:10px;
-        border-top: 3px black solid;
-        border-bottom: 3px black solid;
     }
 
-    #footer{
-        height: 100px;
+    #pagefooter{
+        height: 0px;
+        border-top: 1px black solid;
     }
 }
 
@@ -45,7 +84,7 @@ html, body{
     width:100%;
     text-align: center;
     font-size: 11px;
-    padding: 5px 0px 5px 0px;
+    padding: 10px 0px 20px 0px;
 }
 
 @import 'mainmenu';

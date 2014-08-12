@@ -19,8 +19,9 @@ return array(
         'translate',
         'backjob',
         'efontawesome',
-        'language',
-        'excel'
+        'excel',
+        'appLanguage',
+        'appTheme',
     ),
 
     'aliases' => array(
@@ -90,6 +91,9 @@ return array(
 
 	// application components
 	'components'=>array(
+        'appTanguage'=>array('class'=>'Language'),
+        'appTheme'=>array('class'=>'Theme'),
+
 		'user'=>array(
             'class'=>'WUser',
             'allowAutoLogin'=>true,

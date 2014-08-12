@@ -11,34 +11,61 @@
 html, body {
   width: 100%;
   height: 100%;
-  font-family: 'Droid Sans'; }
+  font-family: 'Droid Sans';
+  background-color: #f8f8f8; }
 
 #page {
-  width: 1000px;
-  margin: 0 auto;
-  /*min-height: 100%;*/
-  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.6); }
+  width: 1150px;
+  margin: 0 auto; }
   #page #header {
+    position: relative;
     width: 100%;
-    min-height: 100px; }
+    min-height: 191.66667px;
+    background-size: 1150px 287.5px;
+    background-repeat: no-repeat;
+    background-position: center; }
+    #page #header .left {
+      width: 50%;
+      float: left;
+      max-height: 162.66667px; }
+      #page #header .left .content {
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        padding: 20px; }
+        #page #header .left .content .logo {
+          display: block;
+          margin: 0 auto; }
+    #page #header .right {
+      width: 50%;
+      float: right;
+      max-height: 162.66667px;
+      /* menu bar */ }
+      #page #header .right .content {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 20px; }
+    #page #header #nav-container {
+      position: absolute;
+      width: 100%;
+      margin-top: 162.66667px; }
   #page #content {
     max-width: 100%;
-    padding: 10px;
-    border-top: 3px black solid;
-    border-bottom: 3px black solid; }
-  #page #footer {
-    height: 100px; }
+    padding: 10px; }
+  #page #pagefooter {
+    height: 0px;
+    border-top: 1px black solid; }
 
 #footer {
   width: 100%;
   text-align: center;
   font-size: 11px;
-  padding: 5px 0px 5px 0px; }
+  padding: 10px 0px 20px 0px; }
 
 #nav-bar {
   border-top: 0px solid #2d444f;
   border-bottom: 0px solid #2d444f;
-  background: url(img/nav2_bg.gif) repeat-x 0 100% #666e73;
+  /* background:url(img/nav2_bg.gif) repeat-x 0 100% #666e73; */
   padding: 0 30px;
   font-weight: bold; }
 
@@ -50,57 +77,49 @@ html, body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /************** ALL LEVELS  *************/ }
-
-#nav li {
-  position: relative;
-  text-align: left; }
-
-#nav li.over {
-  z-index: 99999; }
-
-#nav li.active {
-  z-index: 100000; }
-
-#nav a, #nav a:hover {
-  display: block;
-  text-decoration: none; }
-
-#nav span {
-  display: block; }
-
-#nav a {
-  line-height: 1.3em;
-  /************ 1ST LEVEL  ***************/ }
-
-#nav li {
-  float: left;
-  /*background:url(img/nav1_sep.gif) no-repeat 100% 0;*/ }
-
-#nav li.active {
-  margin-left: -1px;
-  /*background:url(img/nav1_active.gif) no-repeat;*/
-  color: #fff;
-  font-weight: bold; }
-
-#nav li.active em {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: -1px;
-  width: 3px;
-  height: 27px;
-  background: url(img/nav1_active.gif) no-repeat 100% 0; }
-
-#nav a {
-  float: left;
-  padding: 0 14px;
-  color: #fff;
-  line-height: 27px; }
-
-#nav li.over a {
-  color: #d6e2e5;
+  /************ ALL LEVELS **************/
+  /************ 1ST LEVEL  ***************/
   /************ 1ST LEVEL RESET ************/ }
+  #nav li {
+    position: relative;
+    text-align: left; }
+    #nav li .over {
+      z-index: 99999; }
+    #nav li .active {
+      z-index: 100000; }
+  #nav a, #nav #nav a:hover {
+    color: black;
+    display: block;
+    text-decoration: none; }
+  #nav span {
+    display: block; }
+  #nav a {
+    color: black;
+    line-height: 1.3em;
+    /************ 1ST LEVEL  ***************/ }
+  #nav li {
+    float: left;
+    /*background:url(img/nav1_sep.gif) no-repeat 100% 0;*/ }
+    #nav li .active {
+      margin-left: -1px;
+      /*background:url(img/nav1_active.gif) no-repeat;*/
+      /*color:#fff;*/
+      font-weight: bold; }
+    #nav li .active em {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 3px;
+      height: 27px;
+      /* background:url(img/nav1_active.gif) no-repeat 100% 0;*/ }
+    #nav li .over a {
+      color: #d6e2e5; }
+  #nav a {
+    float: left;
+    padding: 0 14px;
+    color: black;
+    line-height: 27px; }
 
 #nav ul li, #nav ul li.active {
   list-style-image: none;
@@ -141,7 +160,7 @@ html, body {
   margin: 0;
   padding: 2px 0 0 0;
   border-top: 0;
-  background: url(img/nav3_bg.png) 0 0 no-repeat;
+  /*  background:url(img/nav3_bg.png) 0 0 no-repeat;*/
   left: 100px;
   top: 13px;
   /* Show menu */ }
@@ -156,7 +175,6 @@ html, body {
   left: 100px; }
 
 #nav ul li {
-  background: url(img/nav2_li_bg.png) repeat-y;
   padding: 0 2px; }
 
 #nav ul li a {
@@ -170,17 +188,15 @@ html, body {
 
 #nav ul span, #nav ul li.last li span {
   padding: 5px 15px;
-  background: url(img/nav2_link_bg.gif) repeat-x 0 100%; }
+  /*  background:url(img/nav2_link_bg.gif) repeat-x 0 100%;*/ }
 
 #nav ul li.last span, #nav ul li.last li.last span {
   background: none; }
 
 #nav ul li.last {
-  background: url(img/nav2_last_li_bg.png) no-repeat 0 100%;
   padding-bottom: 3px; }
 
 #nav ul li.parent a, #nav ul li.parent li.parent a {
-  background-image: url(img/nav2_parent_arrow.gif);
   background-position: 100% 100%;
   background-repeat: no-repeat; }
 

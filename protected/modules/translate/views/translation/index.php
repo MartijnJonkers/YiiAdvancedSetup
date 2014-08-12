@@ -7,25 +7,23 @@
 <h1><?php echo Yii::t($this->id, 'Vertalingen'); ?> - <?php echo ('none'==$lang ? 'Onvertaald' : Yii::app()->locale->getLanguage($lang)) ?></h1>
 
 <p>
-    <?php echo Yii::t($this->id, 'Kies een taal') ?>:
-    <ul>
+    <?php echo Yii::t($this->id, 'Kies een taal'); ?>: |
     <?php
         foreach( Language::getLanguages() as $key => $language ) {
-            echo '<li>'.CHtml::tag(
+            echo CHtml::tag(
                 'a',
                 array( 'href'=>$this->createUrl('translation/index', array('lang'=>$key)) ),
                 Yii::app()->locale->getLanguage($key)
-            ).'</li>';
+            ).' | ';
         }
     ?>
-    </ul>
 </p>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'messages-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-    'template'=>'{summary} {pager} {items} {pager}',
+    'template'=>'{summary} {pager} <br> {items} {pager}',
 	'columns'=>array(
 		'category',
         array(

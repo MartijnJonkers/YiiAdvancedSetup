@@ -4,16 +4,24 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="<?php echo Yii::app()->translate->language; ?>" />
-    <?php Yii::app()->sass->register( Yii::app()->theme->basePath.'/scss/main.scss' ); ?>
+    <?php Yii::app()->sass->register( Yii::app()->theme->basePath.'/scss/main.scss' ,'','theme.resources','css_compiled'); ?>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
 <body>
     <div class="container" id="page">
 
-
         <div id="header">
-            <?php //$this->widget('application.components.MainMenu' ); ?>
+            <div class="left">
+                <div class="content">
+                    <?php echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
+                </div>
+            </div>
+            <div class="right">
+                <div class="content">
+                    right
+                </div>
+            </div>
             <?php
                 $u = Yii::app()->user;
                 $this->widget('application.extensions.mbmenu.MbMenu',array(
@@ -68,7 +76,7 @@
         ?>
 
 
-        <div id="footer">
+        <div id="pagefooter">
 
         </div>
 
