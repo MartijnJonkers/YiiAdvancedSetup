@@ -2,7 +2,7 @@
 
 class UserModule extends UserModuleOriginal
 {
-    public static $mailClass = 'AppUser';
+    public static $mailClass = 'WUser';
     public static $mailFunction = 'SendMail';
 
     /**

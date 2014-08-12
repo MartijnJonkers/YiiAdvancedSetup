@@ -1,13 +1,13 @@
  <?php
 /**
  * Message Class file
- * 
- * CActiveRecord that handles message translation DB 
- * 
- * @author Antonio Ramirez 
- * @link http://www.ramirezcobos.com 
- * 
- * 
+ *
+ * CActiveRecord that handles message translation DB
+ *
+ * @author Antonio Ramirez
+ * @link http://www.ramirezcobos.com
+ *
+ *
  * THIS SOFTWARE IS PROVIDED BY THE CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -71,8 +71,8 @@ class Message extends CActiveRecord {
 		$criteria->compare('t.id', $this->id);
 		$criteria->compare('t.language', $this->language, true);
 		$criteria->compare('t.translation', $this->translation, true);
-		$criteria->compare('source.category', $this->category, true);
-		$criteria->compare('source.message', $this->message, true);
+		$criteria->compare('source.category', $this->category);
+		$criteria->compare('source.message', $this->message);
 
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,

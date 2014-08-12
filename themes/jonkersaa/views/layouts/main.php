@@ -13,7 +13,46 @@
 
 
         <div id="header">
-            <?php $this->widget('application.components.MainMenu' ); ?>
+            <?php //$this->widget('application.components.MainMenu' ); ?>
+            <?php
+                $u = Yii::app()->user;
+                $this->widget('application.extensions.mbmenu.MbMenu',array(
+                    'items'=>array(
+                        array(
+                            'label'=>Yii::t('mainmenu','Home'),
+                            'url'=>array('/site/index'),
+                            'visible'=>$u->checkAccess('Site.index')
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','Administrator'),
+                            'url'=>array('#'),
+                            'visible'=>!$u->isGuest,
+                            'items'=>array(
+                                array(
+                                    'label'=>Yii::t('mainmenu','Users'),
+                                    'url'=>array('/user'),
+                                    'visible'=>$u->checkAccess('User.index')
+                                ),
+                                array(
+                                    'label'=>Yii::t('mainmenu','Translations'),
+                                    'url'=>array('/translate/translation'),
+                                    'visible'=>$u->checkAccess('Translation.index')
+                                ),
+                                array(
+                                    'label'=>Yii::t('mainmenu','Rights'),
+                                    'url'=>array('/rights/authItem/permissions'),
+                                    'visible'=>$u->isAdmin()
+                                ),
+                            )
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','Logout').' ('.$u->name.')',
+                            'url'=>array('/user/logout'),
+                            'visible'=>!$u->isGuest
+                        ),
+                    ),
+                ));
+            ?>
         </div>
 
 	    <?php
@@ -28,12 +67,15 @@
             }
         ?>
 
-	    <div class="clear"></div>
 
-	    <div id="footer">
-		    Copyright &copy; <?php echo date('Y'); ?> by Jonkers AA. |  All Rights Reserved. | <?php echo Yii::powered(); ?>
-	    </div><!-- footer -->
+        <div id="footer">
+
+        </div>
 
     </div><!-- page -->
+
+    <div id="footer">
+        Copyright &copy; <?php echo date('Y'); ?> by Jonkers AA |  All Rights Reserved. | <?php echo Yii::powered(); ?>
+    </div><!-- footer -->
 </body>
 </html>

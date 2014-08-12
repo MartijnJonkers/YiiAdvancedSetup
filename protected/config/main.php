@@ -44,6 +44,7 @@ return array(
         'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
         'ext.YiiPHPExcel.YiiPHPExcel',
+        'ext.mbmenu.*',
     ),
 
 	'modules'=>array(
@@ -90,7 +91,7 @@ return array(
 	// application components
 	'components'=>array(
 		'user'=>array(
-            'class'=>'AppUser',
+            'class'=>'WUser',
             'allowAutoLogin'=>true,
             'loginUrl'=>array('/user/login'),
 		),
@@ -118,6 +119,7 @@ return array(
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+                'admin'=>'user/login',
 			),
 		),
 

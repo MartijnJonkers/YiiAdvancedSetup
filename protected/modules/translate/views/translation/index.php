@@ -36,15 +36,15 @@
         ),
         array(
             'type'=>'raw',
-            'name'=>'translations.translation',
+            'name'=>'mt.translation',
             'header'=>'Vertaling - '.Yii::app()->locale->getLanguage($lang),
-            'value'=>'($data->translations && $data->translations[0] ? $data->translations[0]->translation : "")',
+            'value'=>'($data->mt && $data->mt[0] ? $data->mt[0]->translation : "")',
         ),
 		array(
 			'class'=>'CButtonColumn',
             'template'=>'{update} {delete}',
-            'updateButtonUrl'=>'Yii::app()->createUrl("translation/update",array("lang"=>"'.$lang.'","id"=>$data->id))',
-            'deleteButtonUrl'=>'Yii::app()->createUrl("translation/delete",array("lang"=>"'.$lang.'","id"=>$data->id))',
+            'updateButtonUrl'=>'Yii::app()->createUrl("translate/translation/update",array("lang"=>"'.$lang.'","id"=>$data->id))',
+            'deleteButtonUrl'=>'Yii::app()->createUrl("translate/translation/delete",array("lang"=>"'.$lang.'","id"=>$data->id))',
 		),
 	),
 ));

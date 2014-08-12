@@ -2,13 +2,11 @@
 
 class TranslationController extends Controller
 {
-	/**
-	 * @return array action filters
-	 */
-	public function filters()
-	{
-		return [ 'rights' ];
-	}
+    public function init()
+    {
+        /* inport modules from translation module */
+        Yii::import('translate.models.*');
+    }
 
 	/**
 	 * Updates a particular model.
@@ -20,9 +18,10 @@ class TranslationController extends Controller
         $message = $this->loadMessageModel($id);
 		$translated = $this->loadTranslationModel($id,$lang);
 
-		if(isset($_POST['TextTranslation']))
+        //if(isset($_POST['TextTranslation']))
+        if(isset($_POST['Message']))
 		{
-			$translated->translation = $_POST['TextTranslation']['translation'];
+			$translated->translation = $_POST['Message']['translation'];
             $translated->id = $id;
 			if($translated->save())
 				$this->redirect(array('index','lang'=>$lang));
@@ -48,12 +47,12 @@ class TranslationController extends Controller
         }
 
         /* delete completely when all translation deleted */
-        $count = TextTranslation::model()->count(array(
+        $count = Message::model()->count(array(//TextTranslation::model()->count(array(
             'condition'=>'id=:id',
             'params'=>array(':id'=>$id)
         ));
         if($count == 0){
-            Text::model()->findByPk($id)->delete();
+            MessageSource::model()->findByPk($id)->delete();//Text::model()->findByPk($id)->delete();
         }
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -66,13 +65,14 @@ class TranslationController extends Controller
 	 */
 	public function actionIndex($lang='en')
 	{
-        $model=new Text('search');
+        $model=new MessageSource('search');//Text('search');
         $model->unsetAttributes();  // clear any default values
 
         $model->language=$lang;
 
-		if(isset($_GET['Text']))
-			$model->attributes=$_GET['Text'];
+        //if(isset($_GET['Text']))
+        if(isset($_GET['MessageSource']))
+			$model->attributes=$_GET['MessageSource'];//$_GET['Text'];
 
 		$this->render('index',array('model'=>$model, 'lang'=>$lang));
 	}
@@ -87,7 +87,7 @@ class TranslationController extends Controller
 	 */
 	public function loadTranslationModel($id,$lang)
 	{
-		$model = TextTranslation::model()->find(array(
+		$model = Message::model()->find(array(//TextTranslation::model()->find(array(
             'condition'=>'id=:id AND language=:lang',
             'params'=>array(
                 ':id'=>$id,
@@ -95,7 +95,7 @@ class TranslationController extends Controller
             )));
 		if($model===null)
         {
-			$model = new TextTranslation;
+			$model = new Message;//new TextTranslation;
             $model->language = $lang;
         }
 		return $model;
@@ -110,7 +110,7 @@ class TranslationController extends Controller
      */
     public function loadMessageModel($id)
     {
-        $model = Text::model()->findByPk($id);
+        $model = MessageSource::model()->findByPk($id);//Text::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

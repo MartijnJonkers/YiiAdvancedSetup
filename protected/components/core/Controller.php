@@ -21,7 +21,7 @@ class Controller extends RController
     }
 
     /**
-    * put your comment there...
+    * do something before running action
     *
     * @param CAction $action
     * @return boolean

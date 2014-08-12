@@ -9,7 +9,7 @@ class ProfileFieldController extends Controller
 	private $_model;
 	private static $_widgets = array();
 	public $defaultAction = 'admin';
-	public $layout='//layouts/column2';
+	//public $layout='//layouts/column2';
 
 	/**
 	 * @return array action filters
@@ -52,7 +52,7 @@ class ProfileFieldController extends Controller
 			'model'=>$this->loadModel(),
 		));
 	}
-	
+
 	/**
 	 * Register Script
 	 */
@@ -66,14 +66,14 @@ class ProfileFieldController extends Controller
 		$cs->registerScriptFile($baseUrl.'/js/jquery-ui.min.js');
 		$cs->registerScriptFile($baseUrl.'/js/form.js');
 		$cs->registerScriptFile($baseUrl.'/js/jquery.json.js');
-		
+
 		$widgets = self::getWidgets();
-		
+
 		$wgByTypes = ProfileField::itemAlias('field_type');
 		foreach ($wgByTypes as $k=>$v) {
 			$wgByTypes[$k] = array();
 		}
-		
+
 		foreach ($widgets[1] as $widget) {
 			if (isset($widget['fieldType'])&&count($widget['fieldType'])) {
 				foreach($widget['fieldType'] as $type) {
@@ -88,11 +88,11 @@ class ProfileFieldController extends Controller
 	value = $('#value'),
 	allFields = $([]).add(name).add(value),
 	tips = $('.validateTips');
-	
+
 	var listWidgets = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($widgets[0]))."');
 	var widgets = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($widgets[1]))."');
 	var wgByType = jQuery.parseJSON('".str_replace("'","\'",CJavaScript::jsonEncode($wgByTypes))."');
-	
+
 	var fieldType = {
 			'INTEGER':{
 				'hide':['match','other_validator','widgetparams'],
@@ -176,7 +176,7 @@ class ProfileFieldController extends Controller
 				}
 			}
 		};
-			
+
 	function showWidgetList(type) {
 		$('div.widget select').empty();
 		$('div.widget select').append('<option value=\"\">".UserModule::t('No')."</option>');
@@ -186,14 +186,14 @@ class ProfileFieldController extends Controller
 			}
 		}
 	}
-		
+
 	function setFields(type) {
 		if (fieldType[type]) {
 			if (".((isset($_GET['id']))?0:1).") {
 				showWidgetList(type);
 				$('#widgetlist option:first').attr('selected', 'selected');
 			}
-			
+
 			$('div.row').addClass('toshow').removeClass('tohide');
 			if (fieldType[type].hide.length) $('div.'+fieldType[type].hide.join(', div.')).addClass('tohide').removeClass('toshow');
 			if ($('div.widget select').val()) {
@@ -202,19 +202,19 @@ class ProfileFieldController extends Controller
 			$('div.toshow').show(500);
 			$('div.tohide').hide(500);
 			".((!isset($_GET['id']))?"
-			for (var k in fieldType[type].val) { 
+			for (var k in fieldType[type].val) {
 				$('div.'+k+' input').val(fieldType[type].val[k]);
 			}":'')."
 		}
 	}
-	
+
 	function isArray(obj) {
 		if (obj.constructor.toString().indexOf('Array') == -1)
 			return false;
 		else
 			return true;
 	}
-		
+
 	$('#dialog-form').dialog({
 		autoOpen: false,
 		height: 400,
@@ -227,16 +227,16 @@ class ProfileFieldController extends Controller
 				$('#dialog-form fieldset .wparam').each(function(){
 					if ($(this).val()) wparam[$(this).attr('name')] = $(this).val();
 				});
-				
+
 				var tab = $('#tabs ul li.ui-tabs-selected').text();
 				fparam[tab] = {};
 				$('#dialog-form fieldset .tab-'+tab).each(function(){
 					if ($(this).val()) fparam[tab][$(this).attr('name')] = $(this).val();
 				});
-				
+
 				if ($.JSON.encode(wparam)!='{}') $('div.widgetparams input').val($.JSON.encode(wparam));
-				if ($.JSON.encode(fparam[tab])!='{}') $('div.other_validator input').val($.JSON.encode(fparam)); 
-				
+				if ($.JSON.encode(fparam[tab])!='{}') $('div.other_validator input').val($.JSON.encode(fparam));
+
 				$(this).dialog('close');
 			},
 			'".UserModule::t('Cancel')."': function() {
@@ -253,20 +253,20 @@ class ProfileFieldController extends Controller
 		var html = '';
 		var wparam = ($('div.widgetparams input').val())?$.JSON.decode($('div.widgetparams input').val()):{};
 		var fparam = ($('div.other_validator input').val())?$.JSON.decode($('div.other_validator input').val()):{};
-		
+
 		// Class params
 		for (var k in widget.params) {
 			html += '<label for=\"name\">'+((widget.paramsLabels[k])?widget.paramsLabels[k]:k)+'</label>';
 			html += '<input type=\"text\" name=\"'+k+'\" id=\"widget_'+k+'\" class=\"text wparam ui-widget-content ui-corner-all\" value=\"'+((wparam[k])?wparam[k]:widget.params[k])+'\" />';
 		}
-		// Validator params		
+		// Validator params
 		if (widget.other_validator) {
 			var tabs = '';
 			var li = '';
 			for (var t in widget.other_validator) {
 				tabs += '<div id=\"tab-'+t+'\" class=\"tab\">';
 				li += '<li'+((fparam[t])?' class=\"ui-tabs-selected\"':'')+'><a href=\"#tab-'+t+'\">'+t+'</a></li>';
-				
+
 				for (var k in widget.other_validator[t]) {
 					tabs += '<label for=\"name\">'+((widget.paramsLabels[k])?widget.paramsLabels[k]:k)+'</label>';
 					if (isArray(widget.other_validator[t][k])) {
@@ -283,41 +283,41 @@ class ProfileFieldController extends Controller
 			}
 			html += '<div id=\"tabs\"><ul>'+li+'</ul>'+tabs+'</div>';
 		}
-		
+
 		$('#dialog-form fieldset').html(html);
-		
+
 		$('#tabs').tabs();
-		
+
 		// Show form
 		$('#dialog-form').dialog('open');
 	});
-	
+
 	$('#field_type').change(function() {
 		setFields($(this).val());
 	});
-	
+
 	$('#widgetlist').change(function() {
 		if ($(this).val()) {
 			$('div.widgetparams').show(500);
 		} else {
 			$('div.widgetparams').hide(500);
 		}
-		
+
 	});
-	
-	// show all function 
+
+	// show all function
 	$('div.form p.note').append('<br/><a href=\"#\" id=\"showAll\">".UserModule::t('Show all')."</a>');
  	$('#showAll').click(function(){
 		$('div.row').show(500);
 		return false;
 	});
-	
+
 	// init
 	setFields($('#field_type').val());
-	
+
 	";
 		$cs->registerScript(__CLASS__.'#dialog', $js);
-	} 
+	}
 
 	/**
 	 * Creates a new model.
@@ -330,7 +330,7 @@ class ProfileFieldController extends Controller
 		if(isset($_POST['ProfileField']))
 		{
 			$model->attributes=$_POST['ProfileField'];
-			
+
 			if($model->validate()) {
 				$sql = 'ALTER TABLE '.Profile::model()->tableName().' ADD `'.$model->varname.'` ';
 				$sql .= $this->fieldType($model->field_type);
@@ -343,7 +343,7 @@ class ProfileFieldController extends Controller
 					)
 					$sql .= '('.$model->field_size.')';
 				$sql .= ' NOT NULL ';
-				
+
 				if ($model->field_type!='TEXT'&&$model->field_type!='BLOB'||$scheme!='CMysqlSchema') {
 					if ($model->default)
 						$sql .= " DEFAULT '".$model->default."'";
@@ -360,7 +360,7 @@ class ProfileFieldController extends Controller
 				$this->redirect(array('view','id'=>$model->id));
 			}
 		}
-		
+
 		$this->registerScript();
 		$this->render('create',array(
 			'model'=>$model,
@@ -411,30 +411,30 @@ class ProfileFieldController extends Controller
 				    $connection->createCommand(
 				    	"CREATE TEMPORARY TABLE ".Profile::model()->tableName()."_backup (".implode(',',$attr).")"
 				    )->execute();
-				    
+
 				    $connection->createCommand(
 				    	"INSERT INTO ".Profile::model()->tableName()."_backup SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()
 				    )->execute();
-				    
+
 				    $connection->createCommand(
 				    	"DROP TABLE ".Profile::model()->tableName()
 				    )->execute();
-				    
+
 				    $connection->createCommand(
 				    	"CREATE TABLE ".Profile::model()->tableName()." (".implode(',',$attr).")"
 				    )->execute();
-				    
+
 				    $connection->createCommand(
 				    	"INSERT INTO ".Profile::model()->tableName()." SELECT ".implode(',',$attr)." FROM ".Profile::model()->tableName()."_backup"
 				    )->execute();
-				    
+
 				    $connection->createCommand(
 				    	"DROP TABLE ".Profile::model()->tableName()."_backup"
 				    )->execute();
-				    
+
 				    $transaction->commit();
 				}
-				catch(Exception $e) 
+				catch(Exception $e)
 				{
 				    $transaction->rollBack();
 				    $status=false;
@@ -442,7 +442,7 @@ class ProfileFieldController extends Controller
 				if ($status) {
 					$model->delete();
 				}
-				
+
 			} else {
 				$sql = 'ALTER TABLE '.Profile::model()->tableName().' DROP `'.$model->varname.'`';
 				if ($model->dbConnection->createCommand($sql)->execute()) {
@@ -501,7 +501,7 @@ class ProfileFieldController extends Controller
 		}
 		return $this->_model;
 	}
-	
+
 	/**
 	 * MySQL field type
 	 * @param $type string
@@ -511,7 +511,7 @@ class ProfileFieldController extends Controller
 		$type = str_replace('UNIX-DATE','INTEGER',$type);
 		return $type;
 	}
-	
+
 	public static function getWidgets($fieldType='') {
 		$basePath=Yii::getPathOfAlias('application.modules.user.components');
 		$widgets = array();
@@ -538,9 +538,9 @@ class ProfileFieldController extends Controller
 			}
 			$d->close();
 		}
-		return array($list,$widgets);		
+		return array($list,$widgets);
 	}
-	
+
 
     /**
      * Performs the AJAX validation.

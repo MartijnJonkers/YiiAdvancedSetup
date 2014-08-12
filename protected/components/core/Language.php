@@ -8,9 +8,21 @@ class Language extends CComponent
     */
     public function init()
     {
-        // get the language
-        $lang = self::getLanguage();
+        /* Handle language changes */
+        if ($_GET['lang']) {
+            $this->setLanguage($lang);
 
+            /* redirect back if reffered */
+            if (null != Yii::app()->request->urlReferrer) {
+                Yii::app()->request->redirect(Yii::app()->request->urlReferrer);
+            }
+        } else {
+            $this->setLanguage( self::getLanguage() );
+        }
+    }
+
+    private function setLanguage( $lang )
+    {
         // Save language settings to sesion
         Yii::app()->translate->setLanguage( $lang );
         Yii::app()->user->setState('language', $lang );

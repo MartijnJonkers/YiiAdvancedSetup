@@ -15,10 +15,10 @@ class MbMenu extends CMenu
 {
     private $baseUrl;
     private $nljs;
-    
-    public $cssFile;       
+
+    public $cssFile;
     public $activateParents=true;
-    
+
     /**
      * The javascript needed
      */
@@ -27,21 +27,21 @@ class MbMenu extends CMenu
         $js='';
         $js .= '  $("#nav li").hover(' . $this->nljs;
         $js .= '    function () {' . $this->nljs;
-        $js .= '      if ($(this).hasClass("parent")) {' . $this->nljs; 
+        $js .= '      if ($(this).hasClass("parent")) {' . $this->nljs;
         $js .= '        $(this).addClass("over");' . $this->nljs;
         $js .= '      }' . $this->nljs;
-        $js .= '    },' . $this->nljs; 
+        $js .= '    },' . $this->nljs;
         $js .= '    function () {' . $this->nljs;
         $js .= '      $(this).removeClass("over");' . $this->nljs;
         $js .= '    }' . $this->nljs;
         $js .= '  );' . $this->nljs;
         return $js;
-    } 
-      
-	  
+    }
+
+
     /**
-    * Give the last items css 'last' style 
-    */	  
+    * Give the last items css 'last' style
+    */
 	  protected function cssLastItems($items)
 	  {
       $i = max(array_keys($items));
@@ -50,7 +50,7 @@ class MbMenu extends CMenu
 		  if(isset($item['itemOptions']['class']))
 			  $items[$i]['itemOptions']['class'].=' last';
 		  else
-			  $items[$i]['itemOptions']['class']='last';      
+			  $items[$i]['itemOptions']['class']='last';
 
 			foreach($items as $i=>$item)
 			{
@@ -59,13 +59,13 @@ class MbMenu extends CMenu
           $items[$i]['items']=$this->cssLastItems($item['items']);
         }
       }
-      
+
       return array_values($items);
     }
- 
+
      /**
-    * Give the last items css 'parent' style 
-    */	  
+    * Give the last items css 'parent' style
+    */
 	  protected function cssParentItems($items)
 	  {
 	  	foreach($items as $i=>$item)
@@ -75,15 +75,15 @@ class MbMenu extends CMenu
  		      if(isset($item['itemOptions']['class']))
 			      $items[$i]['itemOptions']['class'].=' parent';
 		      else
-			      $items[$i]['itemOptions']['class']='parent'; 
-	  		
+			      $items[$i]['itemOptions']['class']='parent';
+
 	  		$items[$i]['items']=$this->cssParentItems($item['items']);
 	  		}
       }
-      
+
       return array_values($items);
     }
-    
+
     /**
     * Initialize the widget
     */
@@ -98,8 +98,8 @@ class MbMenu extends CMenu
 
         parent::init();
     }
-      
-    
+
+
     /**
     * Publishes the assets
     */
@@ -108,7 +108,7 @@ class MbMenu extends CMenu
         $dir = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'source';
         $this->baseUrl = Yii::app()->getAssetManager()->publish($dir);
     }
-    
+
     /**
     * Registers the external javascript files
     */
@@ -117,19 +117,19 @@ class MbMenu extends CMenu
         // add the script
         $cs = Yii::app()->getClientScript();
         $cs->registerCoreScript('jquery');
-        
+
         $js = $this->createJsCode();
         $cs->registerScript('mbmenu_'.$this->getId(), $js, CClientScript::POS_READY);
     }
- 
+
  	  public function registerCssFile($url=null)
 	  {
         // add the css
         if ($this->baseUrl === '')
             throw new CException(Yii::t('MbMenu', 'baseUrl must be set. This is done automatically by calling publishAssets()'));
- 
+
 	  	  $cs=Yii::app()->getClientScript();
-	  	  if($url===null) { 
+	  	  if($url===null) {
 	  		  $url=$this->baseUrl.'/mbmenu.css';
           $cs->registerCssFile($url,'screen');
           $browser = Browser::detect();
@@ -139,7 +139,7 @@ class MbMenu extends CMenu
 	  	    $cs->registerCssFile($url,'screen');
         }
 	  }
-    
+
 	  protected function renderMenuRecursive($items)
 	  {
 	  	  foreach($items as $item)
@@ -180,7 +180,7 @@ class MbMenu extends CMenu
 					if(!isset($item['url']))
 					{
 						unset($items[$i]);
-						continue;				
+						continue;
 					}
 	  			}
 	  		}
@@ -203,7 +203,7 @@ class MbMenu extends CMenu
 	  	}
 	  	return array_values($items);
 	  }
-    
+
     /**
     * Run the widget
     */
@@ -211,14 +211,14 @@ class MbMenu extends CMenu
     {
           $this->publishAssets();
           $this->registerClientScripts();
-			    $this->registerCssFile($this->cssFile);    
+			    $this->registerCssFile($this->cssFile);
           $htmlOptions['id']='nav-container';
-          echo CHtml::openTag('div',$htmlOptions)."\n";          
+          echo CHtml::openTag('div',$htmlOptions)."\n";
           $htmlOptions['id']='nav-bar';
           echo CHtml::openTag('div',$htmlOptions)."\n";
           parent::run();
           echo CHtml::closeTag('div');
           echo CHtml::closeTag('div');
     }
-	
+
 }

@@ -2,13 +2,13 @@
 
 /**
  * MessageSource Class file
- * 
- * CActiveRecord that handles message source DB 
- * 
- * @author Antonio Ramirez 
- * @link http://www.ramirezcobos.com 
- * 
- * 
+ *
+ * CActiveRecord that handles message source DB
+ *
+ * @author Antonio Ramirez
+ * @link http://www.ramirezcobos.com
+ *
+ *
  * THIS SOFTWARE IS PROVIDED BY THE CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -66,7 +66,7 @@ class MessageSource extends CActiveRecord {
 	public function relations()
 	{
 		return array(
-			'mt' => array(self::HAS_MANY, 'Message', 'id', 'joinType' => 'inner join'),
+			'mt' => array(self::HAS_MANY, 'Message', 'id', 'joinType' => 'LEFT JOIN'),//'inner join'),
 		);
 	}
 
@@ -83,15 +83,47 @@ class MessageSource extends CActiveRecord {
 	{
 		$criteria = new CDbCriteria;
 
-		$criteria->with = array('mt');
-
 		$criteria->compare('t.id', $this->id);
 		$criteria->compare('t.category', $this->category);
-		$criteria->compare('t.message', $this->message);
+        $criteria->compare('t.message', $this->message);
+        $criteria->with = array(//array('mt');
+            'mt'=>array(
+                'on'=>'t.ID=mt.id AND mt.language="'.$this->language.'"'
+            ),
+        );
+
+        //$criteria->together = true;
+
+        /* exclude some categories... */
+//        $criteria->compare('t.category','<>RightsModule',true);
+//        $criteria->compare('t.category','<>UserModule',true);
+//        $criteria->compare('t.category','<>translate',true);
+//        $criteria->compare('t.category','<>translation',true);
 
 		return new CActiveDataProvider(get_class($this), array(
-				'criteria' => $criteria,
-			));
+			'criteria' => $criteria,
+            'pagination'=>array(
+                'pagesize'=>30,
+            ),
+            'sort' => array(
+                'defaultOrder' => 't.category, t.message',
+                'attributes' => array(
+                    'category' => array(
+                        'asc' => 't.category, t.message',
+                        'desc' => 't.category DESC, t.message DESC',
+                    ),
+                    'message' => array(
+                        'asc' => 't.message, t.category',
+                        'desc' => 't.message DESC, t.category DESC',
+                    ),
+                    'mt.translation' => array(
+                        'asc' => 'mt.translation, mt.category',
+                        'desc' => 'mt.translation DESC, mt.category DESC',
+                    ),
+                    '*',
+                ),
+            ),
+		));
 	}
 
 	public function loadMessage($lang = null)

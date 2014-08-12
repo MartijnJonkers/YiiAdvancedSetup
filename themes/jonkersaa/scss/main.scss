@@ -26,20 +26,26 @@ html, body{
 
     #header{
         width:100%;
-        min-height:150px;
-        background-color: red;
+        min-height:100px;
     }
 
     #content{
-        width:100%;
-        background-color: blue;
+        max-width:100%;
+        padding:10px;
+        border-top: 3px black solid;
+        border-bottom: 3px black solid;
     }
 
     #footer{
-        background-color: yellow;
-        width:100%;
-        text-align: center;
+        height: 100px;
     }
+}
+
+#footer{
+    width:100%;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px 0px 5px 0px;
 }
 
 @import 'mainmenu';
