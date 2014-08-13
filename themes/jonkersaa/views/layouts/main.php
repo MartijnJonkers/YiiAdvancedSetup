@@ -14,7 +14,7 @@
         <div id="header">
             <div class="left">
                 <div class="content">
-                    <?php echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
+                    <?php //echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
                 </div>
             </div>
             <div class="right">

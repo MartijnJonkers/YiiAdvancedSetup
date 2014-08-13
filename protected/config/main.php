@@ -72,7 +72,7 @@ return array(
         ),
         'rights' => array(
             'superuserName'=>'Admin', // Name of the role with super user privileges.
-            'authenticatedName'=>'Authenticated',  // Name of the authenticated user role.
+            'authenticatedName'=>'Manager',  // Name of the authenticated user role.
             'userIdColumn'=>'id', // Name of the user id column in the database.
             'userNameColumn'=>'username',  // Name of the user name column in the database.
             'enableBizRule'=>true,  // Whether to enable authorization item business rules.

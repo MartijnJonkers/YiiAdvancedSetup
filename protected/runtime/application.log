@@ -6232,3 +6232,71 @@ Stack trace:
 REQUEST_URI=/YiiAdvancedSetup/user/logout
 HTTP_REFERER=http://localhost/YiiAdvancedSetup/user/profile
 ---
+2014/08/13 08:05:51 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:05:54 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:05:57 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:05:59 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:06:01 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:06:03 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:06:09 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/13 08:12:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message '"usser" aanvraag kan niet gevonden worden.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('usser')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiAdvancedSetup/usser
+---
+2014/08/13 08:14:08 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php:62
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RightsFilter.php(57): RController->accessDenied()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilter.php(38): RightsFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('user')
+#9 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiAdvancedSetup/user
+---
+2014/08/13 08:31:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php:62
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RightsFilter.php(57): RController->accessDenied()
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilter.php(38): RightsFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CInlineFilter.php(58): RController->filterRights(Object(CFilterChain))
+#4 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): CController->run('')
+#8 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/YiiAdvancedSetup/user/admin
+---
