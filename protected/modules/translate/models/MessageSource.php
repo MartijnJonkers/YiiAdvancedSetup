@@ -84,8 +84,8 @@ class MessageSource extends CActiveRecord {
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('t.id', $this->id);
-		$criteria->compare('t.category', $this->category);
-        $criteria->compare('t.message', $this->message);
+		$criteria->compare('t.category', $this->category,true);
+        $criteria->compare('t.message', $this->message,true);
         $criteria->with = array(//array('mt');
             'mt'=>array(
                 'on'=>'t.ID=mt.id AND mt.language="'.$this->language.'"'

@@ -34,6 +34,8 @@
  * @license http://www.yiiframework.com/license/
  */
 
+ @import 'button';
+
 /* #content specific */
  #content div.form label {
     margin: 0.5em 0 0 0.2em;
@@ -49,15 +51,8 @@
 }
 #content div.form input[type="submit"],
 #content div.form input[type="button"] {
-    background: -o-linear-gradient(top, #F02E00 0%, #E50E00 100%);
-    background: -webkit-linear-gradient(top, #F02E00 0%, #E50E00 100%);
-    background: -moz-linear-gradient(top, #F02E00 0%, #E50E00 100%);
-    background: linear-gradient(to bottom, #F02E00 0%, #E50E00 100%);
-    background: #E50E00;
-    color: white;
-    font-weight: bold;
-    border: 1px solid rgb(107,107,107);
-    padding: 2px 15px;
+
+    @include button_blue;
 }
 #content div.form input[type="submit"].gray,
 #content div.form input[type="button"].gray
@@ -80,7 +75,7 @@
 
 /* A hack fix to 'style' the file browse input */
 div.form .fileinput {
-    position: relative;    
+    position: relative;
 }
 div.form .fileinput input[type="file"] {
     position: relative;

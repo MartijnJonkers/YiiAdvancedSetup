@@ -1,29 +1,20 @@
-<?php
-    /* translate */
-    echo Yii::t($this->id,'jonkersaa');
-?>
-
-<div>
-    <?php
-        /* highcharts */
-//        $this->Widget('HighchartsWidget', array(
-//            'options'=>array(
-//                'title' => array(
-//                    'text' => 'Fruit Consumption'
-//                ),
-//                'xAxis' => array(
-//                    'categories' => array('Apples', 'Bananas', 'Oranges')
-//                ),
-//                'yAxis' => array(
-//                    'title' => array(
-//                        'text' => 'Fruit eaten'
-//                    )
-//                ),
-//                'series' => array(
-//                    array('name' => 'Jane', 'data' => array(1, 0, 4)),
-//                    array('name' => 'John', 'data' => array(5, 7, 3))
-//                )
-//            )
-//        ));
-    ?>
+<div id="blocks">
+    <?php $this->renderPartial('_block',array(
+        'title'=>Language::t('left title'),
+        'text'=>Language::t('left text'),
+        'imageClass'=>'left',
+        'url'=>'#',
+    )); ?>
+    <?php $this->renderPartial('_block',array(
+        'title'=>Language::t('middle title'),
+        'text'=>Language::t('middle text'),
+        'imageClass'=>'middle',
+        'url'=>'#',
+    )); ?>
+    <?php $this->renderPartial('_block',array(
+        'title'=>Language::t('right title'),
+        'text'=>Language::t('right text'),
+        'imageClass'=>'right',
+        'url'=>array('site/index'),
+    )); ?>
 </div>

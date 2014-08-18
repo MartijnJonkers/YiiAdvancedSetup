@@ -31,6 +31,8 @@
     <div class="row">
         <?php echo $form->labelEx($translated,'translation'); ?>
         <?php echo $form->textArea($translated,'translation',array('rows'=>4, 'cols'=>50, 'focus'=>true)); ?>
+
+        <?php echo $form->textArea($translated, 'translation', array('rows' => 2, 'cols' => 80, 'class' => 'wtranslate-wysiwyg', 'style' => 'width:750px;')); ?>
         <?php echo $form->error($translated,'translation'); ?>
     </div>
 

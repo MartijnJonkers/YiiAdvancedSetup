@@ -9,56 +9,101 @@
 </head>
 
 <body>
+    <?php /* google analytics */ ?>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-53798107-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <?php /* end google analytics */ ?>
+
     <div class="container" id="page">
 
         <div id="header">
             <div class="left">
                 <div class="content">
-                    <?php //echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
+                    <?php echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
                 </div>
             </div>
             <div class="right">
                 <div class="content">
-                    right
+                    <div class="box">
+
+                    </div>
                 </div>
             </div>
             <?php
+
                 $u = Yii::app()->user;
                 $this->widget('application.extensions.mbmenu.MbMenu',array(
+                //$this->widget('zii.widgets.CMenu',array(
+                    'encodeLabel'=>false,
                     'items'=>array(
                         array(
-                            'label'=>Yii::t('mainmenu','Home'),
+                            'label'=>Yii::t('mainmenu','home button'),
                             'url'=>array('/site/index'),
-                            'visible'=>$u->checkAccess('Site.index')
+                            'visible'=>$u->checkAccess('Site.index'),
                         ),
                         array(
-                            'label'=>Yii::t('mainmenu','Administrator'),
-                            'url'=>array('#'),
+                            'label'=>Yii::t('mainmenu','diensten button'),
+                            'url'=>array('/diensten/index'),
+                            'visible'=>$u->checkAccess('Diensten.index'),
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','news button'),
+                            'url'=>array('/weblog/index'),
+                            'visible'=>$u->checkAccess('Weblog.index'),
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','administrator button'),
+                            'url'=>array($u->isAdmin() ? '/user/admin/admin' : '/user/user/index' ),
                             'visible'=>!$u->isGuest,
                             'items'=>array(
                                 array(
-                                    'label'=>Yii::t('mainmenu','Users'),
-                                    'url'=>array('/user'),
-                                    'visible'=>$u->checkAccess('User.index')
+                                    'label'=>Yii::t('mainmenu','users button'),
+                                    'url'=>array($u->isAdmin() ? '/user/admin/admin' : '/user/user/index' ),
+                                    'visible'=>$u->checkAccess( $u->isAdmin() ? 'User.Admin.Admin' : 'User.User.Index'),
+                                    'active'=>($this->module && $this->module->id == 'user'),
                                 ),
                                 array(
-                                    'label'=>Yii::t('mainmenu','Translations'),
+                                    'label'=>Yii::t('mainmenu','translations button'),
                                     'url'=>array('/translate/translation'),
-                                    'visible'=>$u->checkAccess('Translation.index')
+                                    'visible'=>$u->checkAccess('Translate.*'),
+                                    'active'=>($this->id == 'translation'),
                                 ),
                                 array(
-                                    'label'=>Yii::t('mainmenu','Rights'),
+                                    'label'=>Yii::t('mainmenu','rights button'),
                                     'url'=>array('/rights/authItem/permissions'),
-                                    'visible'=>$u->isAdmin()
+                                    'visible'=>$u->isAdmin(),
+                                    'active'=>($this->module && $this->module->id == 'rights'),
+                                ),
+                                array(
+                                    'label'=>Yii::t('mainmenu','translate button'),
+                                    'url'=>Yii::app()->controller->createUrl(
+                                        Yii::app()->controller->id.'/'.Yii::app()->controller->action->id,
+                                        array_merge($_GET,array('translate'=>Yii::app()->user->getState('translate')?0:1) )
+                                    ),
+                                    'visible'=>$u->checkAccess('Translate.Translation.index'),
                                 ),
                             )
                         ),
                         array(
-                            'label'=>Yii::t('mainmenu','Logout').' ('.$u->name.')',
-                            'url'=>array('/user/logout'),
-                            'visible'=>!$u->isGuest
+                            'label'=>Yii::t('mainmenu','login button'),
+                            'url'=>array('/user/login/login'),
+                            'visible'=>$u->checkAccess('User.Login.Login') && $u->isGuest,
+                        ),
+                        array(
+                            'label'=>Yii::t('mainmenu','logout button'),//.' ('.$u->name.')',
+                            'url'=>array('/user/logout/logout'),
+                            'visible'=>!$u->isGuest,
                         ),
                     ),
+                    'htmlOptions'=>array(
+                        'class'=>'box',
+                    )
                 ));
             ?>
         </div>

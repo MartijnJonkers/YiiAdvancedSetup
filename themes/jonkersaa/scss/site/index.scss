@@ -1,0 +1,59 @@
+@import '../button';
+
+#content{
+    margin-top:20px;
+    #blocks{
+        margin:0 auto;
+
+        .block{
+            width:33.333%;
+            float:left;
+            display:block;
+            .box{
+                margin-left:20px;
+                margin-right:20px;
+                .content{
+                    height: 100px;
+                }
+            }
+            .text{
+                position: relative;
+                padding-top: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                padding-bottom: 50px;
+                text-align:justify;
+                hr{
+                    border-color:#FFFFFF;
+                }
+                .title{
+                    color: #606D7A;
+                    font-weight: bold;
+                    font-size: 30px;
+                    text-shadow: 0 1px #FFF;
+                    text-transform:uppercase;
+                }
+                .button{
+                    @include button_blue;//{}
+                    right:20px;
+                    bottom:10px;
+                    position: absolute;
+                    padding:0px 10px;
+                    font-weight: bold;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 15px;
+                }
+            }
+        }
+        &:after {
+            content:".";
+            display:block;
+            clear:both;
+            font-size:0;
+            line-height:0;
+            height:0;
+            overflow:hidden;
+        }
+    }
+}

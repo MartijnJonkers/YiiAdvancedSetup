@@ -46,4 +46,17 @@ class Controller extends RController
         /* continue */
         return parent::beforeAction($action);
     }
+
+    /**
+    * get translation tag
+    *
+    */
+    public function getCategory()
+    {
+        if(isset($this->module)) {
+            return $this->module->id.'.'.$this->id.'.'.$this->action->id;
+        } else {
+            return $this->id.'.'.$this->action->id;
+        }
+    }
 }

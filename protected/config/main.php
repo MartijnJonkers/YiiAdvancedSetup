@@ -2,13 +2,14 @@
 
 
 // uncomment the following to define a path alias
-// Yii::setPathOfAlias('local','path/to/local-folder');
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('editable', dirname(__FILE__).'/../extensions/x-editable');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Jonkers A & A',
 
     'theme'=>'jonkersaa',
 
@@ -20,8 +21,9 @@ return array(
         'backjob',
         'efontawesome',
         'excel',
-        'appLanguage',
-        'appTheme',
+        'Language',
+        'Theme',
+        'mail',
     ),
 
     'aliases' => array(
@@ -42,10 +44,12 @@ return array(
         'application.modules.rights.components.*',
         'application.modules.rights.components.dataproviders.*',
         'application.modules.translate.TranslateModule',
+        'application.modules.translate.models.*',
         'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
         'ext.YiiPHPExcel.YiiPHPExcel',
         'ext.mbmenu.*',
+        'editable.*'
     ),
 
 	'modules'=>array(
@@ -54,6 +58,9 @@ return array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'gii',
 			'ipFilters'=>array('127.0.0.1','::1'),
+            'generatorPaths'=>array(
+                'bootstrap.gii',
+            ),
 		),
         'user'=>array(
             'tableUsers'=>'users',
@@ -91,8 +98,29 @@ return array(
 
 	// application components
 	'components'=>array(
-        'appTanguage'=>array('class'=>'Language'),
-        'appTheme'=>array('class'=>'Theme'),
+
+        'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
+
+        'editable' => array(
+            'class'     => 'editable.EditableConfig',
+            'form'      => 'jqueryui',        //form style: 'bootstrap', 'jqueryui', 'plain'
+            'mode'      => 'popup',            //mode: 'popup' or 'inline'
+            'defaults'  => array(              //default settings for all editable elements
+               'emptytext' => 'Click to edit'
+            )
+        ),
+
+        'mail'=>array(
+            'class'=>'Mail',
+            'address' => '',
+            'name' => 'My name',
+        ),
+
+        'Language'=>array('class'=>'Language'),
+
+        'Theme'=>array('class'=>'Theme'),
 
 		'user'=>array(
             'class'=>'WUser',

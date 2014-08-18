@@ -211,6 +211,7 @@ class MbMenu extends CMenu
     {
           $this->publishAssets();
           $this->registerClientScripts();
+          if($this->cssFile)
 			    $this->registerCssFile($this->cssFile);
           $htmlOptions['id']='nav-container';
           echo CHtml::openTag('div',$htmlOptions)."\n";

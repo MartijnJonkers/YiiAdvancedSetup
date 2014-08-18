@@ -8,6 +8,12 @@ class TranslationController extends Controller
         Yii::import('translate.models.*');
     }
 
+    public function actionInlineUpdate($id)
+    {
+        $_POST['Message']['translation'] = $_POST['value'];
+        $this->actionUpdate($id,Yii::app()->language);
+    }
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
