@@ -12,7 +12,7 @@
  * @property string $Content
  * @property string $ResourcePath
  */
-class Weblog extends CActiveRecord
+class Weblog extends ActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -108,4 +108,52 @@ class Weblog extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+    /**
+    * do some actions before validate
+    *
+    */
+    public function beforeValidate()
+    {
+        if(Yii::app()->user->id)
+            $this->Author = Yii::app()->user->id;
+
+        if($this->isNewRecord){
+            $this->CreatedUTC = gmdate('Y-m-d H:i:s');
+            $this->UpdatedUTC = $this->CreatedUTC;
+            $this->ResourcePath = 'none';
+        } else {
+            $this->UpdatedUTC = gmdate('Y-m-d H:i:s');
+        }
+
+        return parent::beforeValidate();
+    }
+
+    /**
+    * set resource path
+    *
+    */
+    public function afterSave()
+    {
+        if($this->isNewRecord){
+            $this->isNewRecord = false;
+            $this->ResourcePath = Yii::app()->getBasePath().'/data/blog/'.$this->ID;
+            if($this->update())
+                mkdir($this->ResourcePath);
+        }
+    }
+
+    /**
+    * remove
+    *
+    */
+    public function beforeDelete()
+    {
+        foreach(glob("{$this->ResourcePath}/*") as $file)
+            unlink($file);
+        if(is_dir($this->ResourcePath))
+            rmdir($this->ResourcePath);
+
+        return parent::beforeDelete();
+    }
 }

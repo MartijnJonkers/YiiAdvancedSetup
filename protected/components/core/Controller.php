@@ -12,7 +12,7 @@ class Controller extends RController
 	public $layout='//layouts/column1';
 
     /**
-    * Always user rights
+    * Always use rights
     *
     */
     public function filters()

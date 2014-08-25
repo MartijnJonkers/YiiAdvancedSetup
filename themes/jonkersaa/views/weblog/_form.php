@@ -17,13 +17,15 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+    <br>
 	<div class="row">
-		<?php echo $form->labelEx($model,'Title'); ?>
+		<?php echo $form->label($model,'Title'); ?>
 		<?php echo $form->textField($model,'Title',array('size'=>60,'maxlength'=>300)); ?>
 		<?php echo $form->error($model,'Title'); ?>
 	</div>
+    <br>
 
-	<div class="row">
+	<div class="row" style='display:none'>
 		<?php echo $form->labelEx($model,'Author'); ?>
 		<?php echo $form->textField($model,'Author'); ?>
 		<?php echo $form->error($model,'Author'); ?>
@@ -42,8 +44,12 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Content'); ?>
-		<?php echo $form->textArea($model,'Content',array('rows'=>6, 'cols'=>50)); ?>
+		<?php //echo $form->labelEx($model,'Content'); ?>
+        <?php $this->widget('ext.editMe.widgets.ExtEditMe', array(
+            'model'=>$model,
+            'attribute'=>'Content',
+            'height'=>500,
+        )); ?>
 		<?php echo $form->error($model,'Content'); ?>
 	</div>
 
@@ -54,7 +60,7 @@
 	</div>
 
 	<div class="row buttons">
-        <?php echo CHtml::label('',''); ?>
+        <?php //echo CHtml::label('',''); ?>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 

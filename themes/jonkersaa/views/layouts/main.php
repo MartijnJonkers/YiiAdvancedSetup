@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="<?php echo Yii::app()->translate->language; ?>" />
+	<meta name="language" content="<?php echo Yii::app()->language; ?>" />
     <?php Yii::app()->sass->register( Yii::app()->theme->basePath.'/scss/main.scss' ,'','theme.resources','css_compiled'); ?>
     <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -26,6 +26,13 @@
             <div class="left">
                 <div class="content">
                     <?php echo CHtml::image(Theme::$assetsUrl.'/img/logo.png','',array('class'=>'logo')) ?>
+                    <br />
+                    <?php $this->widget('tstranslation.widgets.TsLanguageWidget', array(
+                        //'dynamicTranslate' => true,
+                        'includeBootstrap' => false, // if in your project bootstrap.js loaded already
+                        'type'=>'inline',
+                        'itemTemplate' => '{flag}',
+                    )); ?>
                 </div>
             </div>
             <div class="right">
@@ -39,9 +46,18 @@
 
                 $u = Yii::app()->user;
                 $this->widget('application.extensions.mbmenu.MbMenu',array(
-                //$this->widget('zii.widgets.CMenu',array(
                     'encodeLabel'=>false,
                     'items'=>array(
+                        array(
+                            'label'=>Yii::t('mainmenu','translate button'),
+                            'url'=>Yii::app()->controller->createUrl(
+                                Yii::app()->controller->id.'/'.Yii::app()->controller->action->id,
+                                array_merge($_GET,array('translate'=>Yii::app()->user->getState('translate')?0:1) )
+                            ),
+                            'visible'=>$u->checkAccess('Translation.*'),
+                            'active'=>Yii::app()->user->getState('translate',false),
+                            'itemOptions'=>array('style'=>'float:right;'),
+                        ),
                         array(
                             'label'=>Yii::t('mainmenu','home button'),
                             'url'=>array('/site/index'),
@@ -59,45 +75,37 @@
                         ),
                         array(
                             'label'=>Yii::t('mainmenu','administrator button'),
-                            'url'=>array($u->isAdmin() ? '/user/admin/admin' : '/user/user/index' ),
+                            'url'=>array($u->isAdmin() ? 'user/admin/admin' : 'user/user/index' ),
                             'visible'=>!$u->isGuest,
                             'items'=>array(
                                 array(
                                     'label'=>Yii::t('mainmenu','users button'),
-                                    'url'=>array($u->isAdmin() ? '/user/admin/admin' : '/user/user/index' ),
+                                    'url'=>array($u->isAdmin() ? '/user/admin/admin' : 'user/user/index' ),
                                     'visible'=>$u->checkAccess( $u->isAdmin() ? 'User.Admin.Admin' : 'User.User.Index'),
                                     'active'=>($this->module && $this->module->id == 'user'),
                                 ),
                                 array(
                                     'label'=>Yii::t('mainmenu','translations button'),
-                                    'url'=>array('/translate/translation'),
-                                    'visible'=>$u->checkAccess('Translate.*'),
+                                    'url'=>array('/translation'),
+                                    'visible'=>$u->checkAccess('Translation.*'),
                                     'active'=>($this->id == 'translation'),
                                 ),
                                 array(
                                     'label'=>Yii::t('mainmenu','rights button'),
-                                    'url'=>array('/rights/authItem/permissions'),
+                                    'url'=>array('rights/authItem/permissions'),
                                     'visible'=>$u->isAdmin(),
                                     'active'=>($this->module && $this->module->id == 'rights'),
-                                ),
-                                array(
-                                    'label'=>Yii::t('mainmenu','translate button'),
-                                    'url'=>Yii::app()->controller->createUrl(
-                                        Yii::app()->controller->id.'/'.Yii::app()->controller->action->id,
-                                        array_merge($_GET,array('translate'=>Yii::app()->user->getState('translate')?0:1) )
-                                    ),
-                                    'visible'=>$u->checkAccess('Translate.Translation.index'),
                                 ),
                             )
                         ),
                         array(
                             'label'=>Yii::t('mainmenu','login button'),
-                            'url'=>array('/user/login/login'),
+                            'url'=>array('user/login/login'),
                             'visible'=>$u->checkAccess('User.Login.Login') && $u->isGuest,
                         ),
                         array(
-                            'label'=>Yii::t('mainmenu','logout button'),//.' ('.$u->name.')',
-                            'url'=>array('/user/logout/logout'),
+                            'label'=>Yii::t('mainmenu','logout button'),
+                            'url'=>array('user/logout/logout'),
                             'visible'=>!$u->isGuest,
                         ),
                     ),
@@ -116,7 +124,7 @@
         <?php
             /* missing translations */
             if ( Yii::app()->user->checkAccess('Translate.Translate.Create') ) {
-                Yii::app()->translate->renderMissingTranslationsEditor();
+                //Yii::app()->translate->renderMissingTranslationsEditor();
             }
         ?>
 

@@ -1,6 +1,6 @@
 <?php
     /* translate */
-    echo Yii::t($this->id,'jonkersaa');
+    echo Yii::t($this->category,'jonkersaa');
 ?>
 
 <div>

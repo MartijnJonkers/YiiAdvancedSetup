@@ -5,32 +5,32 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ID')); ?>:</b>
+	<b><?php echo ($data->getAttributeLabel('ID')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->ID), array('view', 'id'=>$data->ID)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Title')); ?>:</b>
-	<?php echo CHtml::encode($data->Title); ?>
+	<b><?php echo $data->getAttributeLabel('Title'); ?>:</b>
+	<?php echo ($data->Title); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Author')); ?>:</b>
-	<?php echo CHtml::encode($data->Author); ?>
+	<b><?php echo ($data->getAttributeLabel('Author')); ?>:</b>
+	<?php echo ($data->Author); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('CreatedUTC')); ?>:</b>
-	<?php echo CHtml::encode($data->CreatedUTC); ?>
+	<b><?php echo ($data->getAttributeLabel('CreatedUTC')); ?>:</b>
+	<?php echo ($data->CreatedUTC); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('UpdatedUTC')); ?>:</b>
-	<?php echo CHtml::encode($data->UpdatedUTC); ?>
+	<b><?php echo ($data->getAttributeLabel('UpdatedUTC')); ?>:</b>
+	<?php echo ($data->UpdatedUTC); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Content')); ?>:</b>
-	<?php echo CHtml::encode($data->Content); ?>
+	<b><?php echo ($data->getAttributeLabel('Content')); ?>:</b>
+	<?php echo ($data->Content); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('ResourcePath')); ?>:</b>
-	<?php echo CHtml::encode($data->ResourcePath); ?>
+	<b><?php echo ($data->getAttributeLabel('ResourcePath')); ?>:</b>
+	<?php echo ($data->ResourcePath); ?>
 	<br />
 
 

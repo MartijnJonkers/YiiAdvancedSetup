@@ -1,1 +1,1 @@
-diensten
+<?php echo Language::t("diensten"); ?>

@@ -13,6 +13,14 @@ $headerHeight: 230px;
 *{
     margin: 0px;
     padding: 0px;
+    box-sizing: content-box !important;
+    &:before{
+        box-sizing: content-box !important;
+    }
+    &:after {
+        box-sizing: content-box !important;
+    }
+    font-size: inherit !important;
 }
 
 html, body{

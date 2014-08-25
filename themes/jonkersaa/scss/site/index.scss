@@ -4,11 +4,12 @@
     margin-top:20px;
     #blocks{
         margin:0 auto;
-
+        min-height:420px;
         .block{
             width:33.333%;
             float:left;
             display:block;
+            height: 100%;
             .box{
                 margin-left:20px;
                 margin-right:20px;

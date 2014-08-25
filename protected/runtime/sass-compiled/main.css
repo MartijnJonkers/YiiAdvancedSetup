@@ -42,7 +42,13 @@
 
 * {
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  box-sizing: content-box !important;
+  font-size: inherit !important; }
+  *:before {
+    box-sizing: content-box !important; }
+  *:after {
+    box-sizing: content-box !important; }
 
 html, body {
   width: 100%;

@@ -16,14 +16,18 @@ return array(
     'sourceLanguage'=>'--',
 
 	'preload'=>array(
+        'tstranslation',
         'log',
-        'translate',
         'backjob',
         'efontawesome',
         'excel',
         'Language',
         'Theme',
         'mail',
+    ),
+
+    'controllerMap' => array(
+        'tstranslation' => 'ext.tstranslation.controllers.TsTranslationController'
     ),
 
     'aliases' => array(
@@ -43,8 +47,8 @@ return array(
         'application.modules.rights.*',
         'application.modules.rights.components.*',
         'application.modules.rights.components.dataproviders.*',
-        'application.modules.translate.TranslateModule',
-        'application.modules.translate.models.*',
+        'ext.tstranslation.components.*',
+        'ext.tstranslation.models.*',
         'ext.Highcharts.highcharts.*',
         'ext.YiiMailer.YiiMailer',
         'ext.YiiPHPExcel.YiiPHPExcel',
@@ -53,7 +57,6 @@ return array(
     ),
 
 	'modules'=>array(
-        'translate',
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'gii',
@@ -144,16 +147,29 @@ return array(
             'timeout' => 30
         ),
 
-		'urlManager'=>array(
-			'urlFormat'=>'path',
+        'tstranslation'=>array(
+            'class' => 'ext.tstranslation.components.TsTranslation',
+            'accessRules' => '@',
+            'languageChangeFunction' => true,
+        ),
+
+        'urlManager' => array(
+            'class' => 'TsUrlManager',
+            'showLangInUrl' => true,
+            'prependLangRules' => true,
+            'urlFormat'=>'path',
             'showScriptName' => false,
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
+            'rules'=>array(
+                '<controller:\w+>'=>'<controller>',
+                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
                 '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-                'admin'=>'user/login',
-			),
-		),
+                '<module:\w+>/<controller:\w+>/<action:\w+>'=>'<module>/<controller>/<action>',
+                '<module:\w+>/<controller:\w+>'=>'<module>/<controller>',
+                '<module:\w+>'=>'<module>',
+                'admin'=>'site/login',
+            ),
+        ),
 
         'backjob'=>array(
             'class'=>'ext.Backjob.EBackJob',
@@ -191,25 +207,11 @@ return array(
 			),
 		),
 
-        'messages'=>array(
-            'class'=>'CDbMessageSource',
-            'sourceMessageTable' => 'text',
-            'translatedMessageTable' => 'text_translation',
-            'cachingDuration' => 0,
-            'onMissingTranslation' => array('Ei18n', 'missingTranslation'),
-        ),
-
-        'translate'=>array(
-            'class'=>'translate.components.Ei18n',
-            'createTranslationTables' => true,
-            'connectionID' => 'db',
-            'defaultLanguage' => 'en',
-            'languages' => array(
-                  'nl'=>'Nederlands',
-                  'en'=>'English',
-                  //'fr'=>'Français',
-                  //'de'=>'Deutsch',
-            ),
+        'messages' => array(
+            'class' => 'TsDbMessageSource',
+            'onMissingTranslation' => array('TsTranslation', 'addTranslation'),
+            'notTranslatedMessage' => 'Not translated data!',
+            'ifNotTranslatedShowDefault' => false,
         ),
 
         'efontawesome' => array(
