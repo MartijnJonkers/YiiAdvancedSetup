@@ -12,16 +12,14 @@ class ActiveRecord extends CActiveRecord
         if($source == null)
             $source = &$_POST;
 
-        // ge the current model name
+        // get the current model name
         $modelName = get_class($this);
 
         // is there a post?
         if(isset($source[$modelName])) {
-            // post found
             $this->attributes = $source[$modelName];
             return true;
         } else {
-            // no post found
             return false;
         }
     }

@@ -43,7 +43,7 @@ class TranslationController extends Controller
 
     private function loadSourceModel($id)
     {
-        $model = SourceMessages::model()->findByPk($id);//Text::model()->findByPk($id);
+        $model = SourceMessages::model()->findByPk($id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

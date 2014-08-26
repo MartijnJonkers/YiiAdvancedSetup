@@ -20,7 +20,7 @@ class Language extends CComponent
     /**
     * inline translations
     *
-    * note: this only works for non clickable elements!
+    * note: this only works for non clickable elements, use Language::link for clickable elements.
     *
     * @param mixed $text original text
     * @param mixed $category category, defaults to module.controller.action
@@ -33,43 +33,36 @@ class Language extends CComponent
 
         $translated =Yii::t( $category, $text );
 
-        if(Yii::app()->user->getState("translate",false))
-        {
-            $source = SourceMessages::model()->findByAttributes(array('category' => $category,'message' => $text));
-            $translation = TranslatedMessages::model()->findByPk(array('id'=>$source->id,'language'=>Yii::app()->language ));
-            self::$tranlationID++;
-            $htmlOptions['id'] = self::$tranlationPrefix.self::$tranlationID;
-
-
-            $model = $translation ? $translation : $source;
-            $attribute = $translation ? 'translation' : 'message';
-
-            if($addBtn)
-            {
-                $model->$attribute .= CHtml::tag('i',array('class'=>'fa fa-pencil','style'=>'margin-left:5px;','onclick'=>"
-                        event.stopPropagation();
-                        $('#".self::$tranlationPrefix.self::$tranlationID."').editable('show');
-                    "
-                ),'',true);
-            }
-
-            $result = Yii::app()->controller->widget('editable.EditableField', array(
-                'type' => 'textarea',
-                'model' => $model,
-                'attribute' => $attribute,
-                'url' => Yii::app()->createUrl('/translation/update',array('id'=>$source->id)),
-                'placement' => 'right',
-                'showbuttons' => 'bottom',
-                'options'=>array(
-                    'toggle' => $toggle,
-                ),
-                'htmlOptions'=>$htmlOptions,
-                'encode'=>false,
-            ),true);
-            return $result;
-        } else {
+        if(!Yii::app()->user->getState("translate",false))
             return $translated;
+
+        $source = SourceMessages::model()->findByAttributes(array('category' => $category,'message' => $text));
+        $translation = TranslatedMessages::model()->findByPk(array('id'=>$source->id,'language'=>Yii::app()->language ));
+        self::$tranlationID++;
+        $htmlOptions['id'] = self::$tranlationPrefix.self::$tranlationID;
+
+        $model = $translation ? $translation : $source;
+        $attribute = $translation ? 'translation' : 'message';
+
+        if($addBtn)
+        {
+            $model->$attribute .= CHtml::tag('i',array('class'=>'fa fa-pencil','style'=>'margin-left:5px;','onclick'=>"
+                event.stopPropagation();
+                $('#".self::$tranlationPrefix.self::$tranlationID."').editable('show');
+            "),'',true);
         }
+
+        return Yii::app()->controller->widget('editable.EditableField', array(
+            'type' => 'textarea',
+            'model' => $model,
+            'attribute' => $attribute,
+            'url' => Yii::app()->createUrl('/translation/update',array('id'=>$source->id)),
+            'placement' => 'right',
+            'showbuttons' => 'bottom',
+            'options'=>array( 'toggle' => $toggle ),
+            'htmlOptions'=>$htmlOptions,
+            'encode'=>false,
+        ),true);
     }
 
     /**

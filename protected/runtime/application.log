@@ -7712,3 +7712,29 @@ REQUEST_URI=/YiiAdvancedSetup/en/admin
 2014/08/25 21:27:14 [warning] [application] Het toekennen van onveilig attribuut "id" op "ExtLanguages" is mislukt.
 in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\tstranslation\controllers\TsTranslationController.php (57)
 in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/26 08:11:15 [warning] [application] Failed to set unsafe attribute "id" of "ExtLanguages".
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\extensions\tstranslation\controllers\TsTranslationController.php (57)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/26 08:27:29 [warning] [application] Het toekennen van onveilig attribuut "verifyCode" op "RegistrationForm" is mislukt.
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\user\controllers\RegistrationController.php (30)
+in C:\xampp\htdocs\YiiAdvancedSetup\protected\modules\rights\components\RController.php (36)
+in C:\xampp\htdocs\YiiAdvancedSetup\index.php (13)
+2014/08/26 08:27:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message '"user/restore" aanvraag kan niet gevonden worden.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('user/restore')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/YiiAdvancedSetup/nl/user/restore
+---
+2014/08/26 08:32:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Het systeem kon de opgevraagde actie "login" niet vinden.' in C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\YiiAdvancedSetup\framework\web\CWebApplication.php(141): CWebApplication->runController('user/user/login...')
+#3 C:\xampp\htdocs\YiiAdvancedSetup\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\YiiAdvancedSetup\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/YiiAdvancedSetup/user/user/login/login/_lang/nl
+HTTP_REFERER=http://localhost/YiiAdvancedSetup/nl/user/login
+---

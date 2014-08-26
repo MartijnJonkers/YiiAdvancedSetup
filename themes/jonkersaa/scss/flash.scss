@@ -1,0 +1,45 @@
+/**
+* Flash messages
+*/
+
+div.flash-holder{
+    position: absolute;
+    z-index: 100;
+    top: 40px;
+    left: 5%;
+    width: 90%;
+}
+
+@mixin flash-message{
+    padding: 1em;
+    margin-bottom: 1em;
+    color: black;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+div.flash-error{
+    @include flash-message; //{}
+    font-weight: bold;
+    border-color: #FF0000;
+    background: #FFFF90;
+    color: #FF0000;
+    a{
+        color:#8a1f11;
+    }
+}
+div.flash-warning{
+    @include flash-message; //{}
+    background:#FFF6BF;
+    color:#514721;
+    border-color:#FFD324;
+    a{
+        color:#514721;
+    }
+}
+div.flash-success{
+    @include flash-message; //{}
+    color: gray;
+    background: #B3FFB3;
+    border-color: #008000;
+}

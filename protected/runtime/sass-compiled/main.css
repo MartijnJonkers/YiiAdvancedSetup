@@ -34,6 +34,9 @@
  * @license http://www.yiiframework.com/license/
  */
 /* #content specific */
+/**
+* Flash messages
+*/
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
@@ -324,6 +327,48 @@ div.wide.form .row {
 div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage {
   clear: left;
   padding-left: 110px; }
+
+div.flash-holder {
+  position: absolute;
+  z-index: 100;
+  top: 40px;
+  left: 5%;
+  width: 90%; }
+
+div.flash-error {
+  padding: 1em;
+  margin-bottom: 1em;
+  color: black;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-weight: bold;
+  border-color: #f00;
+  background: #ffff90;
+  color: #f00; }
+  div.flash-error a {
+    color: #8a1f11; }
+
+div.flash-warning {
+  padding: 1em;
+  margin-bottom: 1em;
+  color: black;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  background: #fff6bf;
+  color: #514721;
+  border-color: #ffd324; }
+  div.flash-warning a {
+    color: #514721; }
+
+div.flash-success {
+  padding: 1em;
+  margin-bottom: 1em;
+  color: black;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  color: gray;
+  background: #b3ffb3;
+  border-color: #008000; }
 
 #page {
   width: 1150px;

@@ -110,9 +110,9 @@ return array(
             'class'     => 'editable.EditableConfig',
             'form'      => 'jqueryui',        //form style: 'bootstrap', 'jqueryui', 'plain'
             'mode'      => 'popup',            //mode: 'popup' or 'inline'
-            'defaults'  => array(              //default settings for all editable elements
-               'emptytext' => 'Click to edit'
-            )
+            //'defaults'  => array(              //default settings for all editable elements
+            //   'emptytext' => 'Click to edit'
+            //)
         ),
 
         'mail'=>array(
@@ -129,6 +129,7 @@ return array(
             'class'=>'WUser',
             'allowAutoLogin'=>true,
             'loginUrl'=>array('/user/login'),
+            'behaviors' => array('ext.web-user-behavior.WebUserBehavior'),
 		),
 
         'authManager'=>array(

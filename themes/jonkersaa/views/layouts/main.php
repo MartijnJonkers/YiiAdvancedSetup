@@ -20,6 +20,8 @@
     </script>
     <?php /* end google analytics */ ?>
 
+    <?php  $this->renderPartial('//layouts/_flashdialog'); ?>
+
     <div class="container" id="page">
 
         <div id="header">
@@ -80,7 +82,7 @@
                             'items'=>array(
                                 array(
                                     'label'=>Yii::t('mainmenu','users button'),
-                                    'url'=>array($u->isAdmin() ? '/user/admin/admin' : 'user/user/index' ),
+                                    'url'=>array($u->isAdmin() ? '/user/admin/admin' : '/user/user/index' ),
                                     'visible'=>$u->checkAccess( $u->isAdmin() ? 'User.Admin.Admin' : 'User.User.Index'),
                                     'active'=>($this->module && $this->module->id == 'user'),
                                 ),
@@ -92,7 +94,7 @@
                                 ),
                                 array(
                                     'label'=>Yii::t('mainmenu','rights button'),
-                                    'url'=>array('rights/authItem/permissions'),
+                                    'url'=>array('/rights/authItem/permissions'),
                                     'visible'=>$u->isAdmin(),
                                     'active'=>($this->module && $this->module->id == 'rights'),
                                 ),
@@ -100,12 +102,12 @@
                         ),
                         array(
                             'label'=>Yii::t('mainmenu','login button'),
-                            'url'=>array('user/login/login'),
+                            'url'=>array('/user/login/login'),
                             'visible'=>$u->checkAccess('User.Login.Login') && $u->isGuest,
                         ),
                         array(
                             'label'=>Yii::t('mainmenu','logout button'),
-                            'url'=>array('user/logout/logout'),
+                            'url'=>array('/user/logout/logout'),
                             'visible'=>!$u->isGuest,
                         ),
                     ),
